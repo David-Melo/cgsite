@@ -1,0 +1,33 @@
+// ko foreach: search.utils.facets
+.panel-group(data-bind="attr:{ id: 'accordion_facet_' + $data.facet() }")
+    .panel.panel-default
+        .panel-heading
+            h4.panel-title
+                a(data-toggle='collapse',data-bind="text: $data.title, attr: { href: '#' + 'facet_' + $data.facet() , 'data-parent': 'accordion_facet_' + $data.facet() }") Title
+        .panel-collapse.collapse.in(data-bind="attr:{ id: 'facet_' + $data.facet() }")
+            ul.list-group
+                // ko foreach: { data: $data.values, as: 'facet' }
+                li.list-group-item(data-bind="css: { 'facet_active': facet.refined }")
+                    a(href="#",data-bind="click: function(){ my.vm.search.utils.toggleRefine($parent.facet(),facet.value) }")
+                        // ko if: $parent.disjunctive
+                        input.checkbox(type="checkbox",data-bind="attr: { checked: facet.refined }")
+                        // /ko
+                        span(data-bind="text: facet.label")
+                        span.badge.pull-right(data-bind="text: Globalize.format(facet.count,'n0')")
+                // /ko
+                // ko if: $data.has_other_values
+                li.list-group-item.list-group-toggle-header
+                    a.list-group-toggle.collapsed(data-bind="attr: { href: '#extra_facets_' + $data.facet() }",data-toggle="collapse")
+                // /ko
+                li.collapse(data-bind="attr:{ id: 'extra_facets_' + $data.facet() }")
+                    ul.list-group
+                        // ko foreach: { data: $data.other_values, as: 'extra_facet' }
+                        li.list-group-item(data-bind="css: { 'facet_active': extra_facet.refined }")
+                            a(href="#",data-bind="click: function(){ my.vm.search.utils.toggleRefine($parent.facet(),extra_facet.value) }")
+                                // ko if: $parent.disjunctive
+                                input.checkbox(type="checkbox",data-bind="click: function(){ my.vm.search.utils.toggleRefine($parent.facet(),extra_facet.value) }")
+                                // /ko
+                                span(data-bind="text: extra_facet.label")
+                                span.badge.pull-right(data-bind="text: Globalize.format(extra_facet.count,'n0')")
+                        // /ko
+// /ko

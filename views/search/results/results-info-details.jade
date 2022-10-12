@@ -1,0 +1,317 @@
+.panel.panel-default
+
+   .panel-body
+
+      h3(data-bind="text: proptype")
+      p.add-bottom(data-bind="text: description")
+
+      h4 Property Details
+      table.table.remove-bottom
+         tbody
+
+            tr
+               td
+                  b County
+               td(data-bind="text: county")
+            tr
+               td
+                  b Folio
+               td(data-bind="text: folio")
+
+            // ko if: $data.model ===  'RE1'
+            tr
+               td
+                  b Living Araea
+               td(data-bind="text: living_area")
+            tr
+               td
+                  b Cooling
+               td(data-bind="text: cooling")
+            tr
+               td
+                  b Pool
+               td(data-bind="text: (pool)?'Yes':'No'")
+            tr
+               td
+                  b Type of Floors
+               td(data-bind="text: floors")            
+            tr
+               td
+                  b Lot Area
+               td(data-bind="text: (lot_area)?Globalize.format(lot_area,'n0')+' SqFt':'n/a'")
+            tr
+               td
+                  b Extra Rooms
+               td(data-bind="text: additional_rooms")
+            tr
+               td
+                  b Features
+               td(data-bind="text: features")
+            tr
+               td
+                  b Appliances
+               td(data-bind="text: appliances")
+            tr
+               td
+                  b Design
+               td(data-bind="text: design")
+            tr
+               td
+                  b External Features
+               td(data-bind="text: external_features")
+            tr
+               td
+                  b Additional Rooms
+               td(data-bind="text: additional_rooms")
+            tr
+               td
+                  b Parking Type
+               td(data-bind="text: parking_type")
+            tr
+               td
+                  b Parking Spaces
+               td(data-bind="text: (parking_spaces)?parking_spaces:'n/a'")
+            tr
+               td
+                  b Lots
+               td(data-bind="text: lots")
+            tr
+               td
+                  b Association
+               td(data-bind="text: association")
+            tr
+               td
+                  b Association Fee
+               td(data-bind="text: (association_fee)?Globalize.format(association_fee,'c0'):'n/a'")
+            // /ko
+
+            // ko if: $data.model ===  'RE2'
+            tr
+               td
+                  b Living Araea
+               td(data-bind="text: living_area")
+            tr
+               td
+                  b Features
+               td(data-bind="text: features")
+            tr
+               td
+                  b Extra Rooms
+               td(data-bind="text: additional_rooms")
+            tr
+               td
+                  b Features
+               td(data-bind="text: features")
+            tr
+               td
+                  b Appliances
+               td(data-bind="text: appliances")
+            tr
+               td
+                  b Design
+               td(data-bind="text: design")
+            tr
+               td
+                  b External Features
+               td(data-bind="text: external_features")
+            tr
+               td
+                  b Amenities
+               td(data-bind="text: amenities")
+            tr
+               td
+                  b Parking Type
+               td(data-bind="text: parking_type")
+            tr
+               td
+                  b Parking Spaces
+               td(data-bind="text: (parking_spaces)?parking_spaces:'n/a'")
+            tr
+               td
+                  b Cooling
+               td(data-bind="text: cooling")
+            tr
+               td
+                  b Type of Floors
+               td(data-bind="text: floors")
+            tr
+               td
+                  b Type
+               td(data-bind="text: type")
+            tr
+               td
+                  b Security
+               td(data-bind="text: security")
+            tr
+               td
+                  b Association
+               td(data-bind="text: association")
+            tr
+               td
+                  b Association Fee
+               td(data-bind="text: (association_fee)?Globalize.format(association_fee,'c0'):'n/a'")
+            // /ko
+
+            // ko if: $data.model ===  'RNT'
+            tr
+               td
+                  b Living Araea
+               td(data-bind="text: living_area")
+            tr
+               td
+                  b Features
+               td(data-bind="text: features")
+            tr
+               td
+                  b Date Available
+               td(data-bind="text: available")
+            tr
+               td
+                  b Furnished
+               td(data-bind="text: furnished")
+            tr
+               td
+                  b Extra Rooms
+               td(data-bind="text: additional_rooms")
+            tr
+               td
+                  b Features
+               td(data-bind="text: features")
+
+            tr
+               td
+                  b Appliances
+               td(data-bind="text: appliances")
+            tr
+               td
+                  b Design
+               td(data-bind="text: design")
+            tr
+               td
+                  b External Features
+               td(data-bind="text: external_features")
+            tr
+               td
+                  b Amenities
+               td(data-bind="text: amenities")
+            tr
+               td
+                  b Parking Type
+               td(data-bind="text: parking_type")
+            tr
+               td
+                  b Parking Spaces
+               td(data-bind="text: (parking_spaces)?parking_spaces:'n/a'")
+            tr
+               td
+                  b Cooling
+               td(data-bind="text: cooling")
+            tr
+               td
+                  b Type of Floors
+               td(data-bind="text: floors")
+            tr
+               td
+                  b Type
+               td(data-bind="text: type")
+            tr
+               td
+                  b Minimum Lease
+               td(data-bind="text: (minlease)?Globalize.format(minlease,'c0'):'n/a'")
+            tr
+               td
+                  b Rental Period
+               td(data-bind="text: rentperiod")
+            // /ko
+
+            // ko if: $data.model ===  'RIN'
+            tr
+               td
+                  b Cooling
+               td(data-bind="text: cooling")
+            tr
+               td
+                  b Type of Floors
+               td(data-bind="text: floors")
+            tr
+               td
+                  b Extra Rooms
+               td(data-bind="text: additional_rooms")
+            tr
+               td
+                  b Lot Area
+               td(data-bind="text: (lot_area)?Globalize.format(lot_area,'n0')+' SqFt':'n/a'")
+            tr
+               td
+                  b Features
+               td(data-bind="text: features")
+            tr
+               td
+                  b Appliances
+               td(data-bind="text: appliances")
+            tr
+               td
+                  b Design
+               td(data-bind="text: design")
+            tr
+               td
+                  b External Features
+               td(data-bind="text: external_features")
+            tr
+               td
+                  b Parking Type
+               td(data-bind="text: parking_type")
+            tr
+               td
+                  b Parking Spaces
+               td(data-bind="text: (parking_spaces)?parking_spaces:'n/a'")
+            tr
+               td
+                  b Lots
+               td(data-bind="text: lots")
+            tr
+               td
+                  b Association
+               td(data-bind="text: association")
+            tr
+               td
+                  b Association Fee
+               td(data-bind="text: (association_fee)?Globalize.format(association_fee,'c0'):'n/a'")
+            // /ko
+
+            // ko if: $data.model ===  'CLD' || $data.model === 'RLD'
+            tr
+               td
+                  b Land Usage
+               td(data-bind="text: usage")
+            tr
+               td
+                  b Acres
+               td(data-bind="text: acres")
+            tr
+               td
+                  b Utilities
+               td(data-bind="text: utilities")
+            // /ko
+
+            // ko if: $data.model ===  'COM'
+            tr
+               td
+                  b Business Type
+               td(data-bind="text: type")
+            // /ko
+
+            // ko if: $data.model ===  'BUS'
+            tr
+               td
+                  b Year Established
+               td(data-bind="text: year_established")
+            tr
+               td
+                  b Years Active
+               td(data-bind="text: years_active")
+            tr
+               td
+                  b Business Type
+               td(data-bind="text: type")
+            // /ko

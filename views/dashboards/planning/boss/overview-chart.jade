@@ -1,0 +1,17 @@
+#tabs(role="tabpanel")
+    .options
+        .form-group-sm.pull-right
+            select.form-control
+                option Day of the Week (All Tasks)
+                option Campaigns Launching
+                option QA Due
+                option Pixels Due
+    ul.nav.nav-tabs
+        li
+            a Chart
+        li.active
+            a List
+
+    .tab-content
+        #first.tab-pane.fade.in.active
+            div(data-bind="wijbarchart: planning.data.test")

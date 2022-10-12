@@ -1,0 +1,10 @@
+#alert-tpl.tpl
+   //pre(data-bind="text: ko.toJSON($data)")
+   .alert(data-bind="css: 'alert-' + data.mode()",role="alert")
+      button.close(type="button",data-dismiss="alert",data-bind="visible: !data.sticky()") <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      h4(data-bind="visible: data.title, text: data.title")
+      p(data-bind="text: data.message()")
+      //ko if: data.link.title() &&  data.link.url()
+      p
+         a.btn.btn-default.btn-sm.btn-block(href="/#/",data-bind="attr: { href: data.link.url() }, text: data.link.title()")
+      // /ko

@@ -1,0 +1,17 @@
+//h1(style="font-weight:bolder") Unassigned Plans
+.panel.panel-default
+    .panel-heading
+        h1.panel-title Unassigned Plans
+    .panel-body
+        table.table.table-bordered
+            thead
+                th Account
+                th Sales Rep
+                th.text-center Request Date
+                th.text-center Due Date
+            tbody(data-bind="foreach: planning.data.unassigned")
+                tr
+                    td(data-bind="text: client_name")
+                    td(data-bind="text: salesrep")
+                    td.text-center(data-bind="text: moment(request_date()).format('L')")
+                    td.text-center(data-bind="text: moment(due_date()).format('L')")

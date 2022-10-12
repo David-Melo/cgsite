@@ -1,0 +1,21 @@
+.options.clearfix
+    .form-group-sm.pull-right
+        select.form-control
+            option Day of the Week (All Tasks)
+            option Campaigns Launching
+            option QA Due
+            option Pixels Due
+#tabs(role="tabpanel")
+    ul.nav.nav-tabs.pull-right
+        li
+            a Chart
+        li.active
+            a List
+    .tab-content
+        #first.tab-pane.fade.in.active
+div(data-bind="wijbarchart: planning.data.test")
+//
+    What data is this chart meant to show?
+    Tasks by day of the week? What tasks?
+    Adn by what date? Due Date? Assigned Date?
+    Current Week? Last Week?

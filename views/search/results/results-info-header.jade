@@ -1,0 +1,36 @@
+.results-item.panel.panel-default(data-bind="affix: { top:300, min: 0 }")
+
+   .panel-body
+
+      .listing-price.pull-right
+
+         h1.price.text-success.pull-right(data-bind="text: Globalize.format($data.price,'c0')")
+
+         // ko if: model != 'RNT'
+         .payment-wizard.hidden-print
+            a#open-mortgage-calculator.btn.btn-info.btn-xs.pull-right(href="#/search",data-bind="click: my.vm.mortgage.utils.calculate, attr: { 'data-price': price }") Calculate My Payments
+         // /ko
+
+      h3(data-bind="text: $data.full_address")
+
+      span.updated.text-info Last Updated:
+         b(data-bind="text: moment($data.updated).fromNow()")
+
+      .details(data-bind="if: $data.parent === 'RES'")
+
+         span Beds:
+            b(data-bind="text: $data.beds")
+         span Baths:
+            b(data-bind="text: $data.baths")
+         span Year:
+            b(data-bind="text: $data.year")
+         span Living Area:
+            b(data-bind="text: Globalize.format(parseInt($data.living_area||0),'n0') + ' SqFt'")
+         span MLS#:
+            b(data-bind="text: $data.mls")
+
+      .details(data-bind="if: $data.parent === 'COM'")
+         span Year:
+            b(data-bind="text: $data.year")
+         span MLS#:
+            b(data-bind="text: $data.mls")

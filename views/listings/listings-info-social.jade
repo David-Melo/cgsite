@@ -1,0 +1,16 @@
+.btn-group.btn-group-justified.hidden-print.add-bottom
+
+   a.btn.btn-primary(href="#",data-bind="click: function() { $root.print.go({mls:'"+listing.mls+"',agent:'"+agent.id+"'}) } ") <i class="icon-print"></i> Print Listing
+   a.btn.btn-primary(href="#",data-bind="click: function() { $root.email.share.open({ id: '"+listing.id+"', sysid: '"+listing.sysid+"' , full_address: '"+listing.full_address+"', link: '"+listing.link+"', images: ['"+listing.images[0]+"'], mls: '"+listing.mls+"', model: '"+listing.model+"' }) } ") <i class="icon-mail"></i> Email Listing
+
+   .btn-group
+
+      a.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown') <i class="icon-chat"></i> Share This Page &#160;
+         span.caret
+
+      ul.dropdown-menu.pull-right(role='menu',style="width:100%;")
+
+         li.facebook-share(data-bind="facebookShare: { title: '"+listing.full_address+"', url: '"+listing.link+"' }")
+         li.twitter-share(data-bind="twitterShare: { title: '"+listing.full_address+"', url: '"+listing.link+"' }")
+         li.gplus-share(data-bind="gplusShare: { title: '"+listing.full_address+"', url: '"+listing.link+"' }")
+         li.linkedin-share(data-bind="linkedInShare: { title: '"+listing.full_address+"', url: '"+listing.link+"' }")

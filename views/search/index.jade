@@ -1,0 +1,93 @@
+.panel.panel-default
+
+    .panel-body
+
+        ul#search-tabs.nav.nav-tabs
+            li.active
+                a(href="#results",data-toggle="tab",data-bind="css: { disabled: search.data.collection().length < 1 }") Search Results &#160;
+
+        #search-tabs-content.tab-content
+
+            #results.tab-pane.active
+
+                .row
+
+                    .col-sm-3
+
+                        #facet-finance
+                        #facet-parent
+                        #facet-proptype
+                        #facet-city
+                        #facet-county
+                        #facet-beds
+                        #facet-baths
+                        #facet-price
+                        #clear-all
+
+                    .col-sm-9
+
+                        .results(data-bind='foreach: my.vm.search.data.collection')
+
+                            .results-item.panel.panel-default(data-bind="style: { cursor: 'pointer'}, click: my.vm.search.utils.openResult")
+
+                                .panel-body
+
+                                    .pull-right
+                                        .btn-group.share-options
+                                            a.btn.btn-sm.btn-primary.tooltips(data-toggle='tooltip', data-placement='top', data-container='body' , data-original-title='Print This Listing',href="#",data-bind="click: function() { my.vm.print.go({mls:mls,agent:my.vm.agents.utils.random().id}) } ") <i class="icon-print"></i>
+                                            a.btn.btn-sm.btn-primary.tooltips(data-toggle='tooltip', data-placement='top', data-container='body' , data-original-title='Email This Listing',href="#",data-bind="click: my.vm.email.share.open ") <i class="icon-mail"></i>
+                                            .btn-group.share-options(data-toggle='tooltip', data-placement='top', data-container='body' , data-original-title='Share This Listing')
+                                                a.btn.btn-sm.btn-primary.dropdown-toggle(data-bind="attr: { id: 'share-dropdown-'+sysid }",data-toggle='dropdown') <i class="icon-chat"></i>
+                                                    span.caret
+                                                ul.dropdown-menu.pull-right.share-options(role='menu')
+                                                    li.facebook-share(data-bind="facebookShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+                                                    //li.twitter-share(data-bind="twitterShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+                                                    li.gplus-share(data-bind="gplusShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+                                                    li.linkedin-share(data-bind="linkedInShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+
+                                    // ko if: $data.images.length > 0
+                                    img.thumbnail.img-responsive(width="185",data-bind="attr: { src: $data.images[0] }")
+                                    // /ko
+
+                                    // ko ifnot: $data.images.length > 0
+                                    img.thumbnail.img-responsive(width="185",src="http://placehold.it/260x200&text=No+Image+Found")
+                                    // /ko
+
+                                    h2.price.text-success(data-bind="text: Globalize.format($data.price,'c0')")
+
+                                    h4.address(data-bind="text: $data.full_address")
+
+                                    span.updated.text-info Last Updated:
+                                        b(data-bind="text: moment($data.updated).fromNow()")
+
+                                    .details(data-bind="if: $data.parent === 'RES'")
+
+                                        span Beds:
+                                            b(data-bind="text: $data.beds")
+                                        span Baths:
+                                            b(data-bind="text: $data.baths")
+                                        span Year:
+                                            b(data-bind="text: $data.year")
+                                        span Living Area:
+                                            b(data-bind="text: Globalize.format(parseInt($data.living_area||0),'n0') + ' SqFt'")
+                                        span MLS#:
+                                            b(data-bind="text: $data.mls")
+
+                                    .details(data-bind="if: $data.parent === 'COM'")
+                                        span Year:
+                                            b(data-bind="text: $data.year")
+                                        span MLS#:
+                                            b(data-bind="text: $data.mls")
+
+                                    .description.text-muted(data-bind="html: S(description).truncate(120, '... <a href=\"#\">read more</a>').s")
+
+                        #pagination-container
+
+// Knockout Templates  ----------------
+
+// ko stopBinding: true
+include results/results-item
+// /ko
+
+include mortgage-calculator
+include email-share

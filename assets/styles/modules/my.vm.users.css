@@ -1,0 +1,35 @@
+.user-item .panel {
+    position: relative;
+}
+.user-controls {
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+.user-controls a {
+    line-height: 38px;
+    margin-left: 2px;
+    color: #666;
+    display: inline-block;
+}
+.user-controls a:hover {
+    color: #212121;
+}
+.user-image img {
+    height: 100px;
+    width: 100px;
+    margin: 0 0 0 15px;
+}
+.user-image span {
+    height: 100px;
+    width: 100px;
+    margin: 0 0 0 15px;
+ }
+.user-image i {
+    display: block;
+    line-height: 90px;
+    font-size: 64px;
+}
+.user-item .panel-title .status {
+    margin-left: 10px;
+}

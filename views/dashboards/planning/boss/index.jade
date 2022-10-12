@@ -1,0 +1,35 @@
+.planning-home-boss
+
+    .header(data-bind="affix: { top: 50, sibling: '.page-content' }")
+
+        ol.breadcrumb
+            li Home
+            li Planning Boss
+
+        .content-header.panel.panel-default
+            .panel-body
+                .content-header-title
+                    h1 Planning Boss - Home
+
+    .page-content.inset
+
+        .row
+
+            .col-sm-6
+
+                include stats
+
+            .col-sm-6
+
+                include overview-chart
+
+        .row
+
+            .col-sm-6
+                include pipeline
+
+            .col-sm-6
+
+                include unassigned
+
+

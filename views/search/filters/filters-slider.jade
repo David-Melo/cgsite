@@ -1,0 +1,13 @@
+// ko if: filter.type == 'slider'
+
+.panel.panel-default
+   .panel-heading
+      .panel-title
+         span(data-bind="text: filter.title + ': '")
+         strong(data-bind="text: filter.value()[0]")
+         span(data-bind="text: ' to '")
+         strong(data-bind="text: filter.value()[1]")
+   .panel-body
+      input.filter-slider(data-bind="sliderValue: filter")
+
+// /ko

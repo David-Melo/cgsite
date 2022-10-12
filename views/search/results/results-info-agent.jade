@@ -1,0 +1,76 @@
+.panel.panel-default
+   .panel-body
+
+      .agent-panel.clearfix
+         .details
+            .image.pull-right
+               img.img-responsive.thumbnail.add-bottom(src="https://cms.canerogroup.com" + agent.image.url,style="max-height: 108px;")
+            .info.pull-left
+               h3.text-primary=agent.name
+               h5.text-success=agent.email
+               h5=agent.title
+               h3 (305) 444-5004
+
+      .agent-panel
+
+         ul.listing-tabs.nav.nav-tabs.nav-justified.hidden-print
+            li.active
+               a(data-toggle="tab",data-bind="attr: { href: '#contact-agent-' + sysid }") Contact Agent
+            li
+               a(data-toggle="tab",data-bind="attr: { href: '#make-appointment-'+sysid }") Make Appointment
+
+         .tab-content.hidden-print(data-bind="attr: { id: 'listing-tabs-content-' + sysid }")
+            .tab-pane.active(data-bind="attr: { id: 'contact-agent-' + sysid }")
+               .agent-form
+                  form#contact-agent-form(data-bind="inlineForm: { contact: '" + agent.email + "', subject: 'You have a new lead', template: 'contact-agent-form-tpl' }")
+                     .form-group
+                        input.form-control(name="name",placeholder="First and Last Name",required)
+                     .row
+                        .col-xs-6
+                           .form-group
+                              input.form-control(name="email",placeholder="Email",required)
+                        .col-xs-6
+                           .form-group
+                              input.form-control(name="phone",placeholder="Phone",required)
+
+                     .form-group
+                        textarea.form-control(name="message",rows=5,data-bind="text: 'Hello, Im looking at ' + full_address + ' on CaneroGroup.com and would like some more information.'")
+                     button.btn.btn-success.btn-lg.btn-block Send Message <i class="icon-mail"></i>
+
+            .tab-pane(data-bind="attr: { id: 'make-appointment-' + sysid }")
+               .agent-form
+                  form#contact-appointment-form(data-bind="inlineForm: { contact: '" + agent.email + "', subject: 'You have an appointment request', template: 'contact-appointment-form-tpl' }")
+                     .form-group
+                        input.form-control(name="name",placeholder="First and Last Name",required)
+                     .row
+                        .col-xs-6
+                           .form-group
+                              input.form-control(name="email",placeholder="Email",required)
+                        .col-xs-6
+                           .form-group
+                              input.form-control(name="phone",placeholder="Phone",required)
+                     .row
+                        .col-xs-7
+                           .form-group
+                              select.form-control(name="date",data-bind="options: my.vm.appointments.utils.makeDates(), optionsText: 'label', optionsValue: 'label'")
+                        .col-xs-5
+                           .form-group
+                              select.form-control(name="time")
+                                 option(value="07:00AM") 07:00AM
+                                 option(value="08:00AM") 08:00AM
+                                 option(value="09:00AM") 09:00AM
+                                 option(value="10:00AM") 10:00AM
+                                 option(value="11:00AM") 11:00AM
+                                 option(value="12:00PM") 12:00PM
+                                 option(value="01:00PM") 01:00PM
+                                 option(value="02:00PM") 02:00PM
+                                 option(value="03:00PM") 03:00PM
+                                 option(value="04:00PM") 04:00PM
+                                 option(value="05:00PM") 05:00PM
+                                 option(value="06:00PM") 06:00PM
+                                 option(value="07:00PM") 07:00PM
+                                 option(value="08:00PM") 08:00PM
+
+                     .form-group
+                        textarea.form-control(name="message",rows=5,data-bind="text: 'Hello, Im looking at ' + full_address + ' on CaneroGroup.com and would like to schedule a meeting to get more information.'")
+                     button.btn.btn-success.btn-lg.btn-block Send Message <i class="icon-mail"></i>

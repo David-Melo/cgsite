@@ -1,0 +1,15 @@
+.tpl {
+    display: none;
+}
+.add-bottom {
+    margin-bottom: 20px !important;
+}
+.remove-bottom {
+    margin-bottom: 0;
+}
+#nprogress .spinner {
+    right: 7px;
+}
+.max-width {
+    min-width: 100%;
+}

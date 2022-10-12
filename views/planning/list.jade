@@ -1,0 +1,82 @@
+.plans-list
+
+    .header(data-bind="affix: { top: 50, sibling: '.page-content' }")
+
+        ol.breadcrumb
+            li Home
+            li Planning
+
+        .content-header.panel.panel-default
+            .panel-body
+                .content-header-title
+                    h1 Plans
+
+    .page-content.inset
+
+        .panel.panel-default
+            .panel-body
+
+                .row.add-bottom
+                    .col-sm-4
+                        .input-group.input-group-sm
+                            span.input-group-addon Quick Search:
+                            input.form-control(data-bind="value: planning.data.grid.filter.criteria",placeholder="Client, Campaign, Rep or Planner")
+                            span.input-group-btn.input-group-sm
+                                button.btn.btn-default.btn-sm
+                                    i.icon-search
+                    .col-sm-5.col-sm-offset-3
+                        .btn-group.btn-group-justified
+                            a.btn.btn-primary.btn-sm
+                                i.icon-arrows-ccw
+                                | Reload
+                            a.btn.btn-default.btn-sm
+                                i.icon-clipboard
+                                | Copy
+                            a.btn.btn-default.btn-sm
+                                i.icon-table
+                                | CSV
+                            a.btn.btn-default.btn-sm
+                                i.icon-table
+                                | Excel
+                            a.btn.btn-default.btn-sm
+                                i.icon-file-pdf
+                                | PDF
+
+                table#data(data-bind="wijgrid: plans.data.wijmo")
+
+                .paginator(data-bind="pagiNator: plans")
+
+        //.well
+            table.table.table-bordered.remove-bottom
+                thead
+                    tr
+                        th Client Name
+                        th Campaign
+                        th Sales Reps
+                        th Planner
+                        th.text-center Budget
+                        th Media Requested
+                        th.text-center Requested Date
+                        th.text-center Due Date
+                        th.text-center Status
+                        th.text-center View
+
+                    // ko if: $data.length == 0
+                    tr
+                        th.text-center(colspan="4") No Assigned Plans
+                    // /ko
+
+                tbody(data-bind="foreach: planning.data.plans")
+                    tr
+                        td(data-bind="text: client_name")
+                        td(data-bind="text: rfp_name")
+                        td(data-bind="text: salesrep")
+                        td(data-bind="text: (planner())? planner() : 'UNASSIGNED'")
+                        td.text-right(data-bind="text: Globalize.format(budget(),'c2')")
+                        td(data-bind="text: media_type")
+                        td.text-center(data-bind="text: moment(request_date()).format('L')")
+                        td.text-center(data-bind="text: moment(due_date()).format('L')")
+                        td.text-center(data-bind="text: status")
+                        td
+                            a(data-bind="attr: { href: '#/plans/' + id() }") Go To
+

@@ -1,0 +1,23 @@
+#login-modal.modal.fade(role='dialog', aria-labelledby='login-modal-title', aria-hidden='true',data-backdrop='static')
+
+    .modal-dialog.modal-sm
+
+        .modal-content
+
+            .modal-header
+                button.close(type='button',data-dismiss='modal',aria-hidden='true') ×
+                h4#login-modal-title.modal-title <i class="icon-user"></i> User Login
+
+            .modal-body
+
+                form(action="/session/create",method="POST",data-bind="socketForm: { model: login.new, success: session.utils.create, fail: login.utils.fail }")
+
+                    input(type="hidden",name="_csrf",value=_csrf)
+                    .form-group.has-feedback(data-bind="validationElement: login.new.data.email")
+                        input.form-control(name="email",placeholder="name@yourdomain.com",data-bind="value: login.new.data.email,valueUpdate: 'afterkeydown'")
+
+                    .form-group(data-bind="validationElement: login.new.data.key")
+                        input.form-control(name="key",type="password",autocomplete="false",placeholder="password",data-bind="value: login.new.data.key,valueUpdate: 'afterkeydown'")
+
+                    .form-group.remove-bottom
+                        input.btn.btn-block.btn-success(type="submit",value="Sign In")

@@ -1,0 +1,316 @@
+.panel.panel-default
+
+    .panel-body
+
+        h3=listing.proptype
+        p.add-bottom
+            | !{listing.description}
+
+        h4 Property Details
+        table.table.remove-bottom
+            tbody
+                tr
+                    td
+                        b County
+                    td=listing.county
+
+                tr
+                    td
+                        b Folio
+                    td=listing.folio
+
+                if listing.model == 'RE1'
+                    tr
+                        td
+                            b Living Araea
+                        td=listing.living_area
+                    tr
+                        td
+                            b Cooling
+                        td=listing.cooling
+                    tr
+                        td
+                            b Pool
+                        td=(listing.pool)?'Yes':'No'
+                    tr
+                        td
+                            b Type of Floors
+                        td=listing.floors
+                    
+                    tr
+                        td
+                            b Lot Area
+                        td=(listing.lot_area)?Globalize.format(listing.lot_area,'n0')+' SqFt':'n/a'
+                    tr
+                        td
+                            b Extra Rooms
+                        td=listing.additional_rooms
+                    tr
+                        td
+                            b Features
+                        td=listing.features
+
+                    tr
+                        td
+                            b Appliances
+                        td=listing.appliances
+                    tr
+                        td
+                            b Design
+                        td=listing.design
+                    tr
+                        td
+                            b External Features
+                        td=listing.external_features
+                    tr
+                        td
+                            b Additional Rooms
+                        td=listing.additional_rooms
+                    tr
+                        td
+                            b Parking Type
+                        td=listing.parking_type
+                    tr
+                        td
+                            b Parking Spaces
+                        td=(listing.parking_spaces)?listing.parking_spaces:'n/a'
+                    tr
+                        td
+                            b Lots
+                        td=listing.lots
+                    tr
+                        td
+                            b Association
+                        td=listing.association
+                    tr
+                        td
+                            b Association Fee
+                        td=(listing.association_fee)?Globalize.format(listing.association_fee,'c0'):'n/a'
+
+
+                if listing.model == 'RE2'
+                    tr
+                        td
+                            b Living Araea
+                        td=listing.living_area
+                    tr
+                        td
+                            b Features
+                        td=listing.features
+                    tr
+                        td
+                            b Extra Rooms
+                        td=listing.additional_rooms
+                    tr
+                        td
+                            b Features
+                        td=listing.features
+
+                    tr
+                        td
+                            b Appliances
+                        td=listing.appliances
+                    tr
+                        td
+                            b Design
+                        td=listing.design
+                    tr
+                        td
+                            b External Features
+                        td=listing.external_features
+                    tr
+                        td
+                            b Amenities
+                        td=listing.amenities
+                    tr
+                        td
+                            b Parking Type
+                        td=listing.parking_type
+                    tr
+                        td
+                            b Parking Spaces
+                        td=(listing.parking_spaces)?listing.parking_spaces:'n/a'
+                    tr
+                        td
+                            b Cooling
+                        td=listing.cooling
+                    tr
+                        td
+                            b Type of Floors
+                        td=listing.floors
+                    tr
+                        td
+                            b Type
+                        td=listing.type
+                    tr
+                        td
+                            b Security
+                        td=listing.security
+                    tr
+                        td
+                            b Association
+                        td=listing.association
+                    tr
+                        td
+                            b Association Fee
+                        td=(listing.association_fee)?Globalize.format(listing.association_fee,'c0'):'n/a'
+
+                if listing.model == 'RNT'
+                    tr
+                        td
+                            b Living Araea
+                        td=listing.living_area
+                    tr
+                        td
+                            b Features
+                        td=listing.features
+                    tr
+                        td
+                            b Date Available
+                        td=listing.available
+                    tr
+                        td
+                            b Furnished
+                        td=listing.furnished
+                    tr
+                        td
+                            b Extra Rooms
+                        td=listing.additional_rooms
+                    tr
+                        td
+                            b Features
+                        td=listing.features
+
+                    tr
+                        td
+                            b Appliances
+                        td=listing.appliances
+                    tr
+                        td
+                            b Design
+                        td=listing.design
+                    tr
+                        td
+                            b External Features
+                        td=listing.external_features
+                    tr
+                        td
+                            b Amenities
+                        td=listing.amenities
+                    tr
+                        td
+                            b Parking Type
+                        td=listing.parking_type
+                    tr
+                        td
+                            b Parking Spaces
+                        td=(listing.parking_spaces)?listing.parking_spaces:'n/a'
+                    tr
+                        td
+                            b Cooling
+                        td=listing.cooling
+                    tr
+                        td
+                            b Type of Floors
+                        td=listing.floors
+                    tr
+                        td
+                            b Type
+                        td=listing.type
+                    tr
+                        td
+                            b Minimum Lease
+                        td=(listing.minlease)?Globalize.format(listing.minlease,'c0'):'n/a'
+                    tr
+                        td
+                            b Rental Period
+                        td=listing.rentperiod
+
+                if listing.model == 'RIN'
+                    tr
+                        td
+                            b Cooling
+                        td=listing.cooling
+                    tr
+                        td
+                            b Type of Floors
+                        td=listing.floors
+                    tr
+                        td
+                            b Extra Rooms
+                        td=listing.additional_rooms
+                    tr
+                        td
+                            b Lot Area
+                        td=(listing.lot_area)?Globalize.format(listing.lot_area,'n0')+' SqFt':'n/a'
+                    tr
+                        td
+                            b Features
+                        td=listing.features
+
+                    tr
+                        td
+                            b Appliances
+                        td=listing.appliances
+                    tr
+                        td
+                            b Design
+                        td=listing.design
+                    tr
+                        td
+                            b External Features
+                        td=listing.external_features
+                    tr
+                        td
+                            b Parking Type
+                        td=listing.parking_type
+                    tr
+                        td
+                            b Parking Spaces
+                        td=(listing.parking_spaces)?listing.parking_spaces:'n/a'
+                    tr
+                        td
+                            b Lots
+                        td=listing.lots
+                    tr
+                        td
+                            b Association
+                        td=listing.association
+                    tr
+                        td
+                            b Association Fee
+                        td=(listing.association_fee)?Globalize.format(listing.association_fee,'c0'):'n/a'
+
+                if listing.model == 'CLD' || listing.model == 'RLD'
+                    tr
+                        td
+                            b Land Usage
+                        td=listing.usage
+                    tr
+                        td
+                            b Acres
+                        td=listing.acres
+                    tr
+                        td
+                            b Utilities
+                        td=listing.utilities
+
+                if listing.model == 'COM'
+                    tr
+                        td
+                            b Business Type
+                        td=listing.type
+
+                if listing.model == 'BUS'
+                    tr
+                        td
+                            b Year Established
+                        td=listing.year_established
+                    tr
+                        td
+                            b Years Active
+                        td=listing.years_active
+                    tr
+                        td
+                            b Business Type
+                        td=listing.type

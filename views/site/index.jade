@@ -1,0 +1,48 @@
+extends ../layout
+
+block meta
+    title The Canero Group | Welcome
+    meta(name='description', content='Welcome to The Canero Group, a miami real estate company experienced in both commercial and residential real estate. Use our online property search and other tools to find the perfect property.')
+    meta(property='og:title', content="The Canero Group - Real Estate Investment Services")
+    meta(property='og:type', content='website')
+    meta(property='og:url', content="http://canerogroup.com")
+    meta(property='og:image', content='http://www.canerogroup.com/images/logo_square.jpg')
+    meta(property='og:site_name', content='The Canero Group')
+    meta(property='og:description', content="A Miami real estate company experienced in both commercial and residential real estate. Use our online property search and other tools to find the perfect property.")
+
+block header
+    #hero
+        .hero-wrapper
+            .hero-inner
+                img(src="/images/header.jpg")
+        .container.search-container
+            include ../search/bar
+
+block content
+
+    .home-info
+        .row.text-center
+
+            .col-sm-4
+                .panel-link-container
+                    a.panel-link.clearfix(href="/services")
+                        .well.well-alpha.remove-bottom
+                            h2.title Our Services
+                            i.icon-briefcase
+                            p.lead-copy Our wide range and depth of services provides a success that constantly exceeds our clients' expectations.
+
+            .col-sm-4
+                .panel-link-container
+                    a.panel-link.clearfix(href="/services")
+                        .well.well-alpha.remove-bottom
+                            h2.main-title.text-center We Are The Canero Group
+                            p.welcome-text A private organization specializing in a full range of management and advisory services for Real Estate Investors.
+                            a.btn.btn-warning.btn-block(href="/about") Find Out More <i class="icon-info"></i>
+
+            .col-sm-4
+                .panel-link-container
+                    a.panel-link.clearfix(href="/agents")
+                        .well.well-alpha.remove-bottom
+                            h2.title Our People
+                            i.icon-users
+                            p.lead-copy Our Vast and extensive experience in commercial real estate is unparalleled in the industry and in the area.

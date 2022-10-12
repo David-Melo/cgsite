@@ -1,0 +1,32 @@
+.container-fluid
+    .col-sm-4.col-sm-offset-4
+        form#grovesky-contact-form
+            .row
+                .col-sm-12
+                    .form-group
+                        label Full Name
+                        input.form-control(name="name")
+            .row
+                .col-sm-6
+                    .form-group
+                        label Email Address
+                        input.form-control(name="email")
+                .col-sm-6
+                    .form-group
+                        label Contact Phone
+                        input.form-control(name="phone")
+            .form-group
+                label Questions or Comments
+                textarea.form-control(name="message",rows="2")
+            button.btn.btn-primary.btn-block.btn-lg(type="submit") Send Message &#160;
+                i.icon-mail
+#thanks.modal.fade
+    .modal-dialog(style="z-index: 99999999999999999999999999999999;")
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4.modal-title Thank You!
+            .modal-body
+                | Thank you for your interest. We will get back to you as soon as possible.
+            .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close Window

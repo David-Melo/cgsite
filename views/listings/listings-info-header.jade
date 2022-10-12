@@ -1,0 +1,37 @@
+.results-item.panel.panel-default(data-bind="affix: { top:125, min: 0 }")
+
+   .panel-body
+
+      .listing-price.pull-right
+
+         h1.price.text-success.pull-right !{Globalize.format(listing.price,'c0')}
+
+         if listing.model !== 'COM'
+            .payment-wizard.hidden-print
+               a#open-mortgage-calculator.btn.btn-info.btn-xs.pull-right(href="#/search",data-price=listing.price,data-bind="click: my.vm.mortgage.utils.calculate") Calculate My Payments
+
+      h3=listing.full_address
+
+      span.updated.text-info Last Updated:
+         b !{moment(listing.updated).fromNow()}
+
+      if listing.parent == 'RES'
+         .details
+
+            span Beds:
+               b=listing.beds
+            span Baths:
+               b=listing.baths
+            span Year:
+               b=listing.year
+            span Living Area:
+               b !{Globalize.format(parseInt(listing.living_area||0),'n0')} SqFt
+            span MLS#:
+               b=listing.mls
+
+      if listing.parent == 'COM'
+         .details
+            span Year:
+               b=listing.year
+            span MLS#:
+               b=listing.mls

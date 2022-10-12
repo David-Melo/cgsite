@@ -1,0 +1,26 @@
+.site-settings
+
+    .header(data-bind="affix: { sibling: '.page-content' }")
+
+        ol.breadcrumb
+            li
+                a Admin Home
+            li Settings
+            li Site Theme
+
+
+        .content-header.panel.panel-default
+            .panel-body
+                .content-header-title
+                    h1 Website Theme
+
+    .page-content.inset
+
+        .row(data-bind="foreach: themes.data.collection")
+
+            .col-md-3
+                .well
+                    img.img-responsive.img-max.thumbnail(data-bind="attr: { src: data.thumbnail }")
+                    .caption.text-center
+                        button.btn.btn-primary.btn-sm(data-bind="click: $root.themes.utils.preview") Preview
+                        button.btn.btn-primary.btn-sm(data-bind="click: $root.themes.utils.select") Select

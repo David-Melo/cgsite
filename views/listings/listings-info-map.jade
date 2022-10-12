@@ -1,0 +1,5 @@
+#listing-map.panel.panel-default
+    .panel-heading
+        h4.panel-title Location Map
+    .panel-body
+        .map-canvas(style="width: 100%; height:300px",data-bind="gmap: { address: '"+listing.full_address+"' }")

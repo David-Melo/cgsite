@@ -1,0 +1,42 @@
+extends layout
+
+block meta
+
+block content
+
+    section.cd-hero
+        .cd-slider-nav
+            nav
+                span.cd-marker.item-1
+                ul
+                    li.selected
+                        a(href='#0') Home
+                    li
+                        a(href='#0') Features
+                    li
+                        a(href='#0') Floor Plans
+                    li
+                        a(href='#0') Gallery
+                    li
+                        a(href='#0') Contact Us
+
+        ul.cd-hero-slider
+            li.cd-bg-video.selected
+                .cd-full-width
+                    .logo-container.hidden-sm.hidden-xm
+                        img(src="/images/grovesky/logo.png")
+                    .logo-container.hidden-lg.hidden-md
+                        img(src="/images/grovesky/logo.png")
+                .cd-bg-video-wrapper(data-video='/images/grovesky/video')
+            li
+                .cd-full-width
+                    include features
+            li
+                .cd-full-width
+                    include floorplans
+            li
+                .cd-full-width
+                    include gallery
+            li
+                .cd-full-width
+                    include contact

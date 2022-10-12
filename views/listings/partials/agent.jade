@@ -1,0 +1,74 @@
+.panel.panel-default
+   .panel-body
+
+      .agent-panel
+         .details
+            .image
+               img.img-responsive(src="https://cms.canerogroup.com" + agent.image.url)
+            .info
+               h1= agent.name
+               h3= agent.title
+         .contact
+            h2 (305) 444-5004
+
+         ul.listing-tabs.nav.nav-tabs.nav-justified.hidden-print
+            li.active
+               a(href="#contact-agent-"+listing.field_sysid,data-toggle="tab") Contact Agent
+            li
+               a(href="#make-appointment-"+listing.field_sysid,data-toggle="tab") Make Appointment
+
+         .tab-content.hidden-print(id="listing-tabs-content"+listing.field_sysid)
+            .tab-pane.active(id="contact-agent-"+listing.field_sysid)
+               .agent-form
+                  form#contact-agent-form(data-bind="inlineForm: { contact: '"+ agent.email +"', subject: 'You have a new lead', template: 'contact-agent-form' }")
+                     .form-group
+                        input.form-control(name="name",placeholder="First and Last Name",required)
+                     .row
+                        .col-xs-6
+                           .form-group
+                              input.form-control(name="email",placeholder="Email",required)
+                        .col-xs-6
+                           .form-group
+                              input.form-control(name="phone",placeholder="Phone",required)
+
+                     .form-group
+                        textarea.form-control(name="message",rows=5) Hello, I'm looking at #{listing.field_881} #{listing.field_922}, #{listing.field_924} #{listing.field_10} on CaneroGroup.com and would like some more information.
+                     button.btn.btn-success.btn-lg.btn-block Send Message <i class="icon-mail"></i>
+
+            .tab-pane(id="make-appointment-"+listing.field_sysid)
+               .agent-form
+                  form#contact-appointment-form(data-bind="inlineForm: { contact: '"+ agent.email +"', subject: 'You have an appointment request', template: 'contact-appointment-form' }")
+                     .form-group
+                        input.form-control(name="name",placeholder="First and Last Name",required)
+                     .row
+                        .col-xs-6
+                           .form-group
+                              input.form-control(name="email",placeholder="Email",required)
+                        .col-xs-6
+                           .form-group
+                              input.form-control(name="phone",placeholder="Phone",required)
+                     .row
+                        .col-xs-7
+                           .form-group
+                              select.form-control(name="date",data-bind="options: appointments.utils.makeDates(), optionsText: 'label', optionsValue: 'label'")
+                        .col-xs-5
+                           .form-group
+                              select.form-control(name="time")
+                                 option(value="07:00AM") 07:00AM
+                                 option(value="08:00AM") 08:00AM
+                                 option(value="09:00AM") 09:00AM
+                                 option(value="10:00AM") 10:00AM
+                                 option(value="11:00AM") 11:00AM
+                                 option(value="12:00PM") 12:00PM
+                                 option(value="01:00PM") 01:00PM
+                                 option(value="02:00PM") 02:00PM
+                                 option(value="03:00PM") 03:00PM
+                                 option(value="04:00PM") 04:00PM
+                                 option(value="05:00PM") 05:00PM
+                                 option(value="06:00PM") 06:00PM
+                                 option(value="07:00PM") 07:00PM
+                                 option(value="08:00PM") 08:00PM
+
+                     .form-group
+                        textarea.form-control(name="message",rows=5) Hello, I'm looking at #{listing.field_881} #{listing.field_922}, #{listing.field_924} #{listing.field_10} on CaneroGroup.com and would like to schedule a meeting to get more information.
+                     button.btn.btn-success.btn-lg.btn-block Send Message <i class="icon-mail"></i>

@@ -1,0 +1,4 @@
+#sidebar-alerts
+
+   .alerts(data-bind="template: { name: 'alert-tpl', foreach: alerts.data.filtered().all }")
+   .alerts-sticky(data-bind="template: { name: 'alert-tpl', foreach: alerts.data.filtered().sticky }")

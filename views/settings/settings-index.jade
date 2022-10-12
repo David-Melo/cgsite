@@ -1,0 +1,106 @@
+.site-settings
+
+    .header(data-bind="affix: { top: 50, sibling: '.page-content' }")
+
+        ol.breadcrumb
+            li
+                a Admin Home
+            li Settings
+            li Company Details
+
+        .content-header.panel.panel-default
+            .panel-body
+
+                .content-header-controls.pull-right(data-bind="visible: sites.data.current().dirtyFlag.isDirty()")
+
+                    .btn-group-header.pull-right
+                        button.btn.btn-danger(data-bind="click: settings.utils.site.save") Save Changes <i class="icon-check"></i>
+
+                    .btn-group-header.pull-right
+                        button.btn.btn-default(data-bind="click: sites.data.current().dirtyFlag.revert ") Discard Pending Changes <i class="icon-trash"></i>
+
+                .content-header-title
+                    h1 Basic Company Details
+
+    .page-content.inset
+
+        form#site-settings(action="/settings/set",method="POST",data-bind="socketForm: { model: sites.data.current(), success: settings.utils.site.success, fail: settings.utils.site.fail }")
+
+            input(type="hidden",name="_csrf",value=_csrf)
+
+            fieldset(data-bind="with: sites.data.current")
+
+                .row
+
+                    .col-md-6
+
+                        .panel.panel-default
+                            .panel-heading
+                                .panel-title Website Information
+                            .panel-body
+
+                                .row
+                                    .col-md-6
+                                        .field(data-bind="formField: { value: $data.data.name, label: 'Site Title', type: 'text', required: true }")
+                                    .col-md-6
+                                        .field(data-bind="formField: { value: $data.data.url, label: 'Site URL', type: 'text', required: true, disabled: true }")
+
+                                .field(data-bind="formField: { value: $data.data.description, label: 'Site Description', type: 'textarea' }")
+
+                        .panel.panel-default
+                            .panel-heading
+                                .panel-title Website Logo
+                            .panel-body
+
+                                // ko if: $data.data.logo
+                                img.image-upload.img-responsive.add-bottom(data-bind="attr: { src: $data.data.logo }")
+                                // /ko
+
+                                .logo.cloudImage(data-bind="cloudImage: { value: $data.data.logo, success: $root.settings.utils.site.logo.success, fail: $root.settings.utils.site.logo.fail }")
+
+                                a.btn.btn-danger.btn-sm.pull-left(data-bind="visible: $data.data.logo",data-toggle="modal",data-target="#logo-remove-modal",data-backdrop="static") Remove Logo
+
+                    .col-md-6
+
+                        .panel.panel-default
+                            .panel-heading
+                                .panel-title Contact Information
+                            .panel-body
+
+                                .row
+                                    .col-md-6
+                                        .field(data-bind="formField: { value: $data.data.email, label: 'Email', type: 'text' }")
+                                    .col-md-6
+                                        .field(data-bind="formField: { value: $data.data.phone, label: 'Phone', type: 'text' }")
+
+                                .row
+                                    .col-md-6
+                                        .field(data-bind="formField: { value: $data.data.address1, label: 'Address 1', type: 'text' }")
+                                    .col-md-6
+                                        .field(data-bind="formField: { value: $data.data.address2, label: 'Address 2', type: 'text'}")
+
+                                .row
+                                    .col-md-4
+                                        .field(data-bind="formField: { value: $data.data.city, label: 'City', type: 'text' }")
+                                    .col-md-4
+                                        .field(data-bind="formField: { value: $data.data.state, label: 'State', type: 'text' }")
+                                    .col-md-4
+                                        .field(data-bind="formField: { value: $data.data.zip, label: 'Zip', type: 'text' }")
+
+#logo-remove-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='logo-remove-modal-title', aria-hidden='true',data-backdrop='static')
+    .modal-dialog.modal-md
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4#logo-remove-modal-title.modal-title.text-danger Remove Active Logo
+            .modal-body
+                .error-container
+                p.text-danger Warning! This action cannot be undone.
+            .modal-footer
+                button.btn.btn-danger(data-dismiss="modal") Cancel
+                button.btn.btn-primary(data-bind="click: settings.utils.site.logo.remove") Remove Logo
+
+// Knockout Templates ------------------
+// ko stopBinding: true
+
+// /ko

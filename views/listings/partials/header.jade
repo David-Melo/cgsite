@@ -1,0 +1,53 @@
+.panel-body
+
+   .listing-price.pull-right
+      h1.listing-price #{Globalize.format(parseInt(listing.field_137),'c0')}
+      if source != 'RNT'
+         .payment-wizard.hidden-print
+            a#open-mortgage-calculator.btn.btn-info.btn-xs.pull-right(href="#/search",data-bind="click: mortgage.utils.calculate",data-price=listing.field_137) Calculate My Payments
+
+   h1.lead-title.lead-title-lg #{listing.field_881} #{listing.field_922}, #{listing.field_924} #{listing.field_10}
+
+      span
+         if source == 'RE1' || source == 'RE2' || source == 'RNT'
+
+            small Beds:
+               b= listing.field_25
+            small Baths:
+               b= listing.field_92
+            small Year:
+               b= listing.field_314
+            small Size:
+               b #{Globalize.format(parseInt(listing.field_129||0),'n0')} SqFt
+            small Lot:
+               b #{Globalize.format(parseInt(listing.field_232||0),'n0')} SqFt
+            small MLS#:
+               b= listing.field_157
+            small Updated:
+               b= moment(listing.field_131).fromNow()
+
+         else
+
+            small Property Type:
+               b= listing.field_594
+            small Year:
+               b= listing.field_314
+            small Lot:
+               b #{Globalize.format(parseInt(listing.field_232||0),'n0')} SqFt
+            small MLS#:
+               b= listing.field_157
+            small Updated:
+               b= moment(listing.field_131).fromNow()
+
+   .btn-group.btn-group-justified.hidden-print
+      a.btn.btn-primary(href="#",data-toggle='modal', data-target='#register-modal') <i class="icon-heart"></i> Mark as Favorite
+      a.btn.btn-primary(href="#",data-bind="click: function() { $root.print.go('/print/"+source+"/"+listing.id+"/"+agent.id+"') }") <i class="icon-print"></i> Print Listing
+      a.btn.btn-primary(href="#",data-bind="click: function() { $root.email.share.open({ id: '"+listing.id+"', sysid: '"+listing.field_sysid+"' , address: '"+listing.address+"', link: '"+listing.link+"' }) }") <i class="icon-mail"></i> Email Listing
+      .btn-group
+         a.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown') <i class="icon-chat"></i> Share This Page &#160;
+            span.caret
+         ul.dropdown-menu.pull-right(role='menu',style="width:100%;")
+            li#facebook-share(data-bind="facebookShare: { title: '"+listing.address+"', url: '"+listing.link+"' }")
+            li#twitter-share(data-bind="twitterShare: { title: '"+listing.address+"', url: '"+listing.link+"' }")
+            li#gplus-share(data-bind="gplusShare: { title: '"+listing.address+"', url: '"+listing.link+"' }")
+            li#linkedin-share(data-bind="linkedInShare: { title: '"+listing.address+"', url: '"+listing.link+"' }")

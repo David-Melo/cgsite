@@ -1,0 +1,104 @@
+#thanks.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4.modal-title Thank You!
+            .modal-body
+                | Thank you for your interest. We will get back to you as soon as possible. If you need anything else please dont' hesitate to call: <b>(305) 444-5004</b>
+            .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close Window
+
+script#share-listing-form-tpl(style="display:none",type="text/html")
+    .message(style="padding:20px;")
+        h3 Hello,
+        br
+        h4 {{email}} has shared a property listing with you.
+        br
+        p I was looking at this property on The Canero Group and wanted to share it with you.
+        br
+        p {{message}}
+        br
+        h4 {{address}}
+        br
+        p You can see what this listing looks like and where it is located with the images below, or you can click the link below to view the listing on CaneroGroup.com.
+        p <a href="{{link}}" title="{{address}}" target="_blank">Full info for  {{address}} on CaneroGroup.com</a>
+        br
+        p Call Us Today For More Information! <u>305-444-5004</u>
+        br
+        h3 Attached Maps & Image
+        | <img src="{{image}}" style="max-width:550px;display: block;margin: 0 auto;margin-bottom:20px;"/>
+        | {{#maps}}
+        | <img src="{{.}}" style="max-width:550px;display: block;margin: 0 auto;margin-bottom:20px;"/>
+        | {{/maps}}
+        h3 Call Us Today <u>305-444-5004</u> <br> Email Us At info@canerogroup.com
+
+#contact-agent-form-tpl(style="display: none")
+    table(width='100%', style='margin-bottom: 20px;')
+        tbody
+            tr
+                td(style='text-align: center')
+                    h1 The CaneroGroup
+                    span
+                        a(href='http://canerogroup.com', target='blank') www.CaneroGroup.com
+                    br
+                    span info@canerogroup.com
+    hr
+    table.content(width='100%', style='text-align:center; margin-bottom: 20px;')
+        thead(style='color: #006698; text-transform: uppercase;')
+            tr
+                th Name
+                th Email
+                th Phone
+        tbody
+            tr
+                td {{name}}
+                td {{email}}
+                td {{phone}}
+    table(width='100%', style='text-align:center; margin-bottom: 20px;')
+        thead(style='color: #006698; text-transform: uppercase;')
+            tr
+                th Message
+        tbody
+            tr
+                td {{message}}
+
+
+#contact-appointment-form-tpl(style="display: none")
+    table(width='100%', style='margin-bottom: 20px;')
+        tbody
+            tr
+                td(style='text-align: center')
+                    h1 The CaneroGroup
+                    span
+                        a(href='http://canerogroup.com', target='blank') www.CaneroGroup.com
+                    br
+                    span info@canerogroup.com
+    hr
+    table.content(width='100%', style='text-align:center; margin-bottom: 20px;')
+        thead(style='color: #006698; text-transform: uppercase;')
+            tr
+                th Name
+                th Email
+                th Phone
+        tbody
+            tr
+                td {{name}}
+                td {{email}}
+                td {{phone}}
+    table(width='100%', style='text-align:center; margin-bottom: 20px;')
+        thead(style='color: #006698; text-transform: uppercase;')
+            tr
+                th Desired Date
+                th Desired Time
+        tbody
+            tr
+                td {{date}}
+                td {{time}}
+    table(width='100%', style='text-align:center; margin-bottom: 20px;')
+        thead(style='color: #006698; text-transform: uppercase;')
+            tr
+                th Message
+        tbody
+            tr
+                td {{message}}

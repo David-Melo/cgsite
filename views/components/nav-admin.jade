@@ -1,0 +1,22 @@
+// ko stopBinding: true
+#navigation-tpl.tpl
+
+    ul.side-nav.sidebar-nav.navbar-nav
+
+        // ko foreach: navigation.data.modules
+        li
+            a(data-bind="attr: { href: (data.route())? data.route : '#' }") <i data-bind="if: data.icon,attr: { class: data.icon }"></i>
+                span(data-bind="text: data.title") Title
+            // ko if: data.routes
+            ul.sub-nav.navbar-nav.collapse(style="height: 0px;",data-bind="foreach: data.routes")
+                li
+                    a(data-bind="attr: { href: route }")
+                        span(data-bind="text: title")
+                        i.icon-right-open.pull-right
+            // /ko
+        // /ko
+
+        li
+            a(href="/logout") <i class="icon-lock"></i> Sign Out
+
+// /ko

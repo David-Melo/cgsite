@@ -1,0 +1,31 @@
+.planning-overview-stats
+
+    .row
+        .col-sm-4
+
+            a(href="/#/plans/status/new")
+                .numberCircle.red
+                    .height_fix
+                    .content.big(data-bind="text: planning.data.unassigned().length")
+            h4.text-center(style="font-weight:bold") New
+
+        .col-sm-4
+
+            a(href="/#/plans/status/planning")
+                .numberCircle.green
+                    .height_fix
+                    .content
+                        span(data-bind="text: planning.data.assigned().length")
+                        span &#160;/&#160;
+                        span 0
+            h4.text-center(style="font-weight:bold") Planning / Revisions
+
+        .col-sm-4
+
+            a(href="/#/plans/status/closing")
+                .numberCircle.purple
+                    .height_fix
+                    .content 0
+            h4.text-center(style="font-weight:bold") Closing
+
+

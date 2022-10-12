@@ -1,0 +1,632 @@
+.info-panels.add-bottom.visible-print(id=listing.id)
+    .panel.panel-default(class="Property_Description_" + listing.id)
+        .panel-heading.panel-link
+            a.collapse-heading(href="#Property_Description_" + listing.id,data-parent="#" + listing.id,data-toggle="collapse") Property Description
+        .panel-body
+            p= listing.field_214
+    .panel.panel-default(class="Property_Features_" + listing.id)
+        .panel-heading.panel-link
+            a.collapse-heading.collapsed(href="#Directions_" + listing.id,data-parent="#" + listing.id,data-toggle="collapse") Directions
+        .panel-body
+            p= listing.field_1088
+    .panel.panel-default(class="Property_Information_" + listing.id)
+        .panel-heading.panel-link
+            a.collapse-heading.collapsed(href="#Property_Information_" + listing.id,data-parent="#" + listing.id,data-toggle="collapse") Property Information
+        .panel-body
+            dl.dl-horizontal
+                dt Folio #:
+                dd= listing.field_264
+                dt Year Built:
+                dd= listing.field_314
+                dt County:
+                dd= listing.field_61
+                dt City:
+                dd= listing.field_922
+                dt Zip Code:
+                dd= listing.field_10
+                dt Legal Description:
+                dd= listing.field_1339
+                dt Zoning:
+                dd= listing.field_318
+                if source == 'RE1'
+                    dt Development Name:
+                    dd= listing.field_69
+                    dt Tax Amount:
+                    dd #{Globalize.format(parseInt(listing.field_274 || 0), 'n0')}
+                    dt Tax Year:
+                    dd= listing.field_275
+                    dt Bedrooms:
+                    dd= listing.field_25
+                    dt Full Baths:
+                    dd= listing.field_92
+                    dt Half Baths:
+                    dd= listing.field_109
+                    dt Living Area:
+                    dd #{Globalize.format(parseInt(listing.field_129 || 0), 'n0')} SqFt
+                    dt Property Area:
+                    dd #{Globalize.format(parseInt(listing.field_232 || 0), 'n0')} SqFt
+                    dt Pool:
+                    dd= listing.field_191
+    .panel.panel-default(class="Property_Features_" + listing.id)
+        .panel-heading.panel-link
+            a.collapse-heading.collapsed(href="#Property_Features_" + listing.id,data-parent="#" + listing.id,data-toggle="collapse") Property Features
+        .panel-body
+            h3 Interior
+            dl.dl-horizontal
+                if source == 'RE1'
+                    dt Floor:
+                    dd= listing.field_96
+                    dt Dining Area:
+                    dd= listing.field_70
+                    dt Additional Rooms:
+                    dd= listing.field_220
+                    dt Spa:
+                    dd= listing.field_238
+                    dt Bedroom Description:
+                    dd= listing.field_31
+                    dt Master Bathroom Description:
+                    dd= listing.field_162
+                    dt Interior Features:
+                    dd= listing.field_116
+                    dt Equipment/Appliances:
+                    dd= listing.field_81
+                    dt Windows/Treatment:
+                    dd= listing.field_290
+                    dt Heating Description:
+                    dd= listing.field_110
+                    dt Cooling Description:
+                    dd= listing.field_57
+                if source == 'COM'
+                    // COM ONLY
+                    dt Column Description:
+                    dd= listing.field_599
+                    dt Fire Protection:
+                    dd= listing.field_608
+                    dt Max Ceiling Height:
+                    dd= listing.field_638
+                    dt Ceiling Description:
+                    dd= listing.field_598
+                    dt Interior Ceiling Height:
+                    dd= listing.field_612
+                    dt Eave Height:
+                    dd= listing.field_605
+            if source == 'RE1'
+                h3 Exterior
+                dl.dl-horizontal
+                    dt Design:
+                    dd= listing.field_68
+                    dt Construction:
+                    dd= listing.field_53
+                    dt Roof:
+                    dd= listing.field_219
+                    dt Exterior Features:
+                    dd= listing.field_87
+            h3 Other Information
+            dl.dl-horizontal
+                dt MLS#:
+                dd= listing.field_157
+                if source == 'RE1'
+                    dt Short Sale:
+                    dd= listing.field_1465
+                    dt Foreclosure:
+                    dd= listing.field_1473
+                    dt Living Area:
+                    dd #{Globalize.format(parseInt(listing.field_129 || 0), 'n0')} SqFt
+                    dt Garage Spaces:
+                    dd= listing.field_102
+                    dt Carport Spaces:
+                    dd= listing.field_59
+                    dt Waterfront Frontage:
+                    dd= listing.field_289
+                    dt Parking Info:
+                    dd= listing.field_177
+                    dt Property Faces:
+                    dd= listing.field_90
+                    dt Furnished:
+                    dd= listing.field_99
+                    dt Lot Description:
+                    dd= listing.field_141
+                    dt Waterfront:
+                    dd= listing.field_295
+                    dt Water Access:
+                    dd= listing.field_294
+                    dt View:
+                    dd= listing.field_285
+                    dt Pool Dimensions:
+                    dd= listing.field_189
+                    dt Pets Allowed:
+                    dd= listing.field_181
+                    dt Guest House:
+                    dd= listing.field_108
+                    dt Guest House Area:
+                    dd #{Globalize.format(parseInt(listing.field_107 || 0), 'n0')} SqFt
+                    dt Subdivision Information:
+                    dd= listing.field_254
+                    dt Maintenance Includes:
+                    dd= listing.field_147
+                    dt Sprinkler Description:
+                    dd= listing.field_241
+                    dt Cable Available:
+                    dd= listing.field_44
+                    dt Water:
+                    dd= listing.field_291
+                    dt Sewer:
+                    dd= listing.field_258
+                    dt Type of Association:
+                    dd= listing.field_111
+                    dt Association Fee:
+                    dd #{Globalize.format(parseInt(listing.field_93 || 0), 'c0')}
+                    dt Special Information:
+                    dd= listing.field_293
+                if source == 'RE2'
+                    dt Units In Building:
+                    dd= listing.field_373
+                    dt Units In Complex:
+                    dd= listing.field_374
+                    dt Unit Type:
+                    dd= listing.field_372
+                    dt Security:
+                    dd= listing.field_364
+                    dt Amenities:
+                    dd= listing.field_319
+                    dt Approval Information:
+                    dd= listing.field_321
+                if source == 'RNT'
+                    dt Rent Period:
+                    dd= listing.field_578
+                    dt Date Available:
+                    dd= listing.field_562
+                    dt Furnished:
+                    dd= listing.field_99
+                    dt Type:
+                    dd= listing.field_588
+                    dt Minimum Lease Period:
+                    dd= listing.field_567
+                    dt Application Fee:
+                    dd= listing.field_554
+                    dt Move in Cost:
+                    dd= listing.field_570
+                    dt Lease Terms:
+                    dd= listing.field_567
+                    dt Rental Deposit Includes:
+                    dd= listing.field_579
+                    dt Rental Payment includes:
+                    dd= listing.field_580
+                    dt Lease Renewable:
+                    dd= listing.field_577
+                if source == 'COM'
+                    dt Property Type:
+                    dd= listing.field_594
+                    dt Sale Includes:
+                    dd= listing.field_614
+                    dt Ownership Type:
+                    dd= listing.field_650
+                    dt Road Type:
+                    dd= listing.field_656
+                    dt # of floors:
+                    dd= listing.field_643
+                    dt # of Offices:
+                    dd= listing.field_646
+                    dt Location of Property:
+                    dd= listing.field_617
+                    dt # of Bays:
+                    dd= listing.field_641
+                    dt # of Loading Doors:
+                    dd= listing.field_644
+                    dt Number of Acres:
+                    dd #{Globalize.format(parseInt(listing.field_455 || 0), 'n0')}
+                    dt Lot Frontage:
+                    dd= listing.field_616
+                    dt Tenant pays:
+                    dd= listing.field_666
+                    dt Road Frontage:
+                    dd= listing.field_655
+                    dt CAM Includes:
+                    dd= listing.field_595
+                    dt CAM Amount:
+                    dd= listing.field_597
+                    dt Information Available:
+                    dd= listing.field_615
+                    dt Misc Information:
+                    dd= listing.field_623
+                    dt Lease Term Info:
+                    dd= listing.field_618
+                    dt Deposit Includes:
+                    dd= listing.field_602
+                    dt Lease SqFt:
+                    dd #{Globalize.format(parseInt(listing.field_517 || 0), 'n0')} SqFt
+                    dt Net Operating income:
+                    dd= listing.field_416
+                if source == 'CLD'
+                    dt Environmental:
+                    dd= listing.field_509
+                    dt Comprehensive Plan use:
+                    dd= listing.field_531
+                    dt Jurisdiction:
+                    dd= listing.field_515
+                    dt Usage:
+                    dd= listing.field_545
+                    dt Acres:
+                    dd #{Globalize.format(parseInt(listing.field_455 || 0), 'n0')}
+                    dt Elevation Above Sea Level:
+                    dd= listing.field_508
+                    dt Trees:
+                    dd= listing.field_542
+                    dt Ground:
+                    dd= listing.field_511
+                    dt Land Improvement:
+                    dd= listing.field_516
+                    dt Available Documents:
+                    dd= listing.field_507
+                    dt Deed Restrictions:
+                    dd= listing.field_461
+                    dt Soil Type:
+                    dd= listing.field_487
+                    dt Utilities Available
+                    dd= listing.field_546
+                    dt Utilities On Site
+                    dd= listing.field_526
+                if source == 'CLD'
+                    dt Business Name:
+                    dd= listing.field_325
+                    dt Type of Sale:
+                    dd= listing.field_744
+                    dt Type of Business:
+                    dd= listing.field_748
+                    dt License:
+                    dd= listing.field_732
+                    dt Years Business Established:
+                    dd= listing.field_756
+                    dt # of Employees:
+                    dd= listing.field_737
+                    dt # of hours:
+                    dd= listing.field_736
+                    dt Lease Term Remaining:
+                    dd= listing.field_750
+                    dt Renewal Option:
+                    dd= listing.field_740
+                if source == 'RIN'
+                    dt Total Units:
+                    dd= listing.field_445
+                if source == 'RLD'
+                    dt Includes:
+                    dd= listing.field_460
+                    dt Number of Parcels:
+                    dd= listing.field_477
+                    dt For Lease:
+                    dd= listing.field_470
+                    dt Land Fill:
+                    dd= listing.field_469
+                    dt Subdivision Information:
+                    dd= listing.field_492
+                    dt Boat Dock Accommodates
+                    dd= listing.field_464
+if listing.processed
+    .panel.panel-default
+        .panel-body
+            .listing-gallery(class="carousel-" + listing.field_sysid)
+                .carousel.slide.add-bottom(id="gallery-carousel-" + listing.field_sysid,data-bind="imgSlider: {}",data-listing=listing.field_sysid,data-count=listing.processed,data-url=listing.image_url)
+                    .carousel-inner
+                    a.left.carousel-control(href="#gallery-carousel-" + listing.field_sysid,data-slide="prev")
+                        span.icon-prev
+                    a.right.carousel-control(href="#gallery-carousel-" + listing.field_sysid,data-slide="next")
+                        span.icon-next
+            .thumbnail-controls(id="gallery-thumbs-" + listing.field_sysid,data-bind="imgThumbs: {}",data-listing=listing.field_sysid,data-count=listing.processed,data-url=listing.image_url)
+                .row
+.info-collapse.panel-group.add-bottom.hidden-print(id=listing.id)
+    .panel.panel-default(class="Property_Description_" + listing.id)
+        .panel-heading.panel-link
+            a.collapse-heading(href="#Property_Description_" + listing.id,data-parent="#" + listing.id,data-toggle="collapse") Property Description
+        .panel-collapse.collapse.in(id="Property_Description_" + listing.id)
+            .panel-body
+                p= listing.field_214
+    .panel.panel-default(class="Property_Information_" + listing.id)
+        .panel-heading.panel-link
+            a.collapse-heading.collapsed(href="#Property_Information_" + listing.id,data-parent="#" + listing.id,data-toggle="collapse") Property Information
+        .panel-collapse.collapse(id="Property_Information_" + listing.id)
+            .panel-body
+                dl.dl-horizontal
+                    dt Folio #:
+                    dd= listing.field_264
+                    dt Year Built:
+                    dd= listing.field_314
+                    dt County:
+                    dd= listing.field_61
+                    dt City:
+                    dd= listing.field_922
+                    dt Zip Code:
+                    dd= listing.field_10
+                    dt Legal Description:
+                    dd= listing.field_1339
+                    dt Zoning:
+                    dd= listing.field_318
+                    if source == 'RE1'
+                        dt Development Name:
+                        dd= listing.field_69
+                        dt Subdivision Name:
+                        dd= listing.field_235
+                        dt Tax Amount:
+                        dd= listing.field_274
+                        dt Tax Year:
+                        dd #{Globalize.format(parseInt(listing.field_275 || 0), 'n0')}
+                        dt Bedrooms:
+                        dd= listing.field_25
+                        dt Full Baths:
+                        dd= listing.field_92
+                        dt Half Baths:
+                        dd= listing.field_109
+                        dt Total Area:
+                        dd #{Globalize.format(parseInt(listing.field_261 || 0), 'n0')} SqFt
+                        dt Property Area:
+                        dd #{Globalize.format(parseInt(listing.field_232 || 0), 'n0')} SqFt
+                        dt Pool:
+                        dd= listing.field_191
+    .panel.panel-default(class="Property_Features_" + listing.id)
+        .panel-heading.panel-link
+            a.collapse-heading.collapsed(href="#Property_Features_" + listing.id,data-parent="#" + listing.id,data-toggle="collapse") Property Features
+        .panel-collapse.collapse(id="Property_Features_" + listing.id)
+            .panel-body
+                h3 Interior
+                dl.dl-horizontal
+                    if source == 'RE1'
+                        dt Floor:
+                        dd= listing.field_96
+                        dt Dining Area:
+                        dd= listing.field_70
+                        dt Additional Rooms:
+                        dd= listing.field_220
+                        dt Spa:
+                        dd= listing.field_238
+                        dt Bedroom Description:
+                        dd= listing.field_31
+                        dt Master Bathroom Description:
+                        dd= listing.field_162
+                        dt Interior Features:
+                        dd= listing.field_116
+                        dt Equipment/Appliances:
+                        dd= listing.field_81
+                        dt Windows/Treatment:
+                        dd= listing.field_290
+                        dt Heating Description:
+                        dd= listing.field_110
+                        dt Cooling Description:
+                        dd= listing.field_57
+                    if source == 'COM'
+                        // COM ONLY
+                        dt Column Description:
+                        dd= listing.field_599
+                        dt Fire Protection:
+                        dd= listing.field_608
+                        dt Max Ceiling Height:
+                        dd= listing.field_638
+                        dt Ceiling Description:
+                        dd= listing.field_598
+                        dt Interior Ceiling Height:
+                        dd= listing.field_612
+                        dt Eave Height:
+                        dd= listing.field_605
+                if source == 'RE1'
+                    h3 Exterior
+                    dl.dl-horizontal
+                        dt Design:
+                        dd= listing.field_68
+                        dt Construction:
+                        dd= listing.field_53
+                        dt Roof:
+                        dd= listing.field_219
+                        dt Exterior Features:
+                        dd= listing.field_87
+                h3 Other Information
+                dl.dl-horizontal
+                    dt MLS#:
+                    dd= listing.field_157
+                    if source == 'RE1'
+                        dt Short Sale:
+                        dd= listing.field_1465
+                        dt Foreclosure:
+                        dd= listing.field_1473
+                        dt Living Area:
+                        dd #{Globalize.format(parseInt(listing.field_129 || 0), 'n0')} SqFt
+                        dt Garage Spaces:
+                        dd= listing.field_102
+                        dt Carport Spaces:
+                        dd= listing.field_59
+                        dt Waterfront Frontage:
+                        dd= listing.field_289
+                        dt Parking Info:
+                        dd= listing.field_177
+                        dt Property Faces:
+                        dd= listing.field_90
+                        dt Furnished:
+                        dd= listing.field_99
+                        dt Lot Description:
+                        dd= listing.field_141
+                        dt Waterfront:
+                        dd= listing.field_295
+                        dt Water Access:
+                        dd= listing.field_294
+                        dt View:
+                        dd= listing.field_285
+                        dt Pool Dimensions:
+                        dd= listing.field_189
+                        dt Pets Allowed:
+                        dd= listing.field_181
+                        dt Guest House:
+                        dd= listing.field_108
+                        dt Guest House Area:
+                        dd #{Globalize.format(parseInt(listing.field_107 || 0), 'n0')} SqFt
+                        dt Subdivision Information:
+                        dd= listing.field_254
+                        dt Maintenance Includes:
+                        dd= listing.field_147
+                        dt Sprinkler Description:
+                        dd= listing.field_241
+                        dt Cable Available:
+                        dd= listing.field_44
+                        dt Water:
+                        dd= listing.field_291
+                        dt Sewer:
+                        dd= listing.field_258
+                        dt Type of Association:
+                        dd= listing.field_111
+                        dt Association Fee:
+                        dd #{Globalize.format(parseInt(listing.field_93 || 0), 'c0')}
+                        dt Special Information:
+                        dd= listing.field_293
+                    if source == 'RE2'
+                        dt Units In Building:
+                        dd= listing.field_373
+                        dt Units In Complex:
+                        dd= listing.field_374
+                        dt Unit Type:
+                        dd= listing.field_372
+                        dt Security:
+                        dd= listing.field_364
+                        dt Amenities:
+                        dd= listing.field_319
+                        dt Approval Information:
+                        dd= listing.field_321
+                    if source == 'RNT'
+                        dt Rent Period:
+                        dd= listing.field_578
+                        dt Date Available:
+                        dd= listing.field_562
+                        dt Furnished:
+                        dd= listing.field_99
+                        dt Type:
+                        dd= listing.field_588
+                        dt Minimum Lease Period:
+                        dd= listing.field_567
+                        dt Application Fee:
+                        dd= listing.field_554
+                        dt Move in Cost:
+                        dd= listing.field_570
+                        dt Lease Terms:
+                        dd= listing.field_567
+                        dt Rental Deposit Includes:
+                        dd= listing.field_579
+                        dt Rental Payment includes:
+                        dd= listing.field_580
+                        dt Lease Renewable:
+                        dd= listing.field_577
+                    if source == 'COM'
+                        dt Property Type:
+                        dd= listing.field_594
+                        dt Sale Includes:
+                        dd= listing.field_614
+                        dt Ownership Type:
+                        dd= listing.field_650
+                        dt Road Type:
+                        dd= listing.field_656
+                        dt # of floors:
+                        dd= listing.field_643
+                        dt # of Offices:
+                        dd= listing.field_646
+                        dt Location of Property:
+                        dd= listing.field_617
+                        dt # of Bays:
+                        dd= listing.field_641
+                        dt # of Loading Doors:
+                        dd= listing.field_644
+                        dt Number of Acres:
+                        dd #{Globalize.format(parseInt(listing.field_455 || 0), 'n0')}
+                        dt Lot Frontage:
+                        dd= listing.field_616
+                        dt Tenant pays:
+                        dd= listing.field_666
+                        dt Road Frontage:
+                        dd= listing.field_655
+                        dt CAM Includes:
+                        dd= listing.field_595
+                        dt CAM Amount:
+                        dd= listing.field_597
+                        dt Information Available:
+                        dd= listing.field_615
+                        dt Misc Information:
+                        dd= listing.field_623
+                        dt Lease Term Info:
+                        dd= listing.field_618
+                        dt Deposit Includes:
+                        dd= listing.field_602
+                        dt Lease SqFt:
+                        dd #{Globalize.format(parseInt(listing.field_517 || 0), 'n0')} SqFt
+                        dt Net Operating income:
+                        dd= listing.field_416
+                    if source == 'CLD'
+                        dt Environmental:
+                        dd= listing.field_509
+                        dt Comprehensive Plan use:
+                        dd= listing.field_531
+                        dt Jurisdiction:
+                        dd= listing.field_515
+                        dt Usage:
+                        dd= listing.field_545
+                        dt Acres:
+                        dd #{Globalize.format(parseInt(listing.field_455 || 0), 'n0')}
+                        dt Elevation Above Sea Level:
+                        dd= listing.field_508
+                        dt Trees:
+                        dd= listing.field_542
+                        dt Ground:
+                        dd= listing.field_511
+                        dt Land Improvement:
+                        dd= listing.field_516
+                        dt Available Documents:
+                        dd= listing.field_507
+                        dt Deed Restrictions:
+                        dd= listing.field_461
+                        dt Soil Type:
+                        dd= listing.field_487
+                        dt Utilities Available
+                        dd= listing.field_546
+                        dt Utilities On Site
+                        dd= listing.field_526
+                    if source == 'CLD'
+                        dt Business Name:
+                        dd= listing.field_325
+                        dt Type of Sale:
+                        dd= listing.field_744
+                        dt Type of Business:
+                        dd= listing.field_748
+                        dt License:
+                        dd= listing.field_732
+                        dt Years Business Established:
+                        dd= listing.field_756
+                        dt # of Employees:
+                        dd= listing.field_737
+                        dt # of hours:
+                        dd= listing.field_736
+                        dt Lease Term Remaining:
+                        dd= listing.field_750
+                        dt Renewal Option:
+                        dd= listing.field_740
+                    if source == 'RIN'
+                        dt Total Units:
+                        dd= listing.field_445
+                    if source == 'RLD'
+                        dt Includes:
+                        dd= listing.field_460
+                        dt Number of Parcels:
+                        dd= listing.field_477
+                        dt For Lease:
+                        dd= listing.field_470
+                        dt Land Fill:
+                        dd= listing.field_469
+                        dt Subdivision Information:
+                        dd= listing.field_492
+                        dt Boat Dock Accommodates
+                        dd= listing.field_464
+    .panel.panel-default(class="Property_Features_" + listing.id)
+        .panel-heading.panel-link
+            a.collapse-heading.collapsed(href="#Directions_" + listing.id,data-parent="#" + listing.id,data-toggle="collapse") Directions
+        .panel-collapse.collapse(id="Directions_" + listing.id)
+            .panel-body
+                p= listing.field_1088
+.panel.panel-default(id="listing-map")
+    .panel-heading
+        h4.panel-title Location Map
+    .panel-body
+        .map-canvas(id="map-canvas_" + listing.id,data-bind="gmap: { address: '" + listing.field_881 + " " + listing.field_922 + " " + listing.field_924 + " " + listing.field_10 + "' }")
+.panel.panel-default.remove-bottom
+    .panel-body
+        small.add-bottom The data relating to real estate for sale/lease on this web site come in part from a cooperative data exchange program of the multiple listing service (MLS) in which this real estate firm (Broker) participates. The properties displayed may not be all of the properties in the MLS's database, or all of the properties listed with Brokers participating in the cooperative data exchange program. Properties listed by Brokers other than this Broker are marked with either the listing Broker's logo or name or the MLS name or a logo provided by the MLS. Detailed information about such properties includes the name of the listing Brokers. Information provided is thought to be reliable but is not guaranteed to be accurate; you are advised to verify facts that are important to you. No warranties, expressed or implied, are provided for the data herein, or for their use or interpretation by the user. The Florida Association of Realtors and its cooperating MLSs do not create, control or review the property data displayed herein and take no responsibility for the content of such records. Federal law prohibits discrimination on the basis of race, color, religion, sex, handicap, familial status or national origin in the sale, rental or financing of housing. Listing courtesy of: #{listing.field_165}

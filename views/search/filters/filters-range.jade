@@ -1,0 +1,18 @@
+// ko if: filter.type == 'range'
+.panel.panel-default
+   .panel-heading
+
+      span(data-bind="text: filter.title + ': '")
+      strong(data-bind="text: (filter.from())? Globalize.format(parseInt(filter.from()),filter.options.format) : 'No Min'")
+      span(data-bind="text: ' to '")
+      strong(data-bind="text: (filter.to())? Globalize.format(parseInt(filter.to()),filter.options.format) : 'No Max'")
+
+   .panel-body
+      .input-group
+         input.form-control(type="text",placeholder="No Min $",data-bind="value: filter.from")
+         span.input-group-addon to
+         input.form-control(type="text",placeholder="No Max $",data-bind="value: filter.to")
+         .input-group-btn
+            button.btn.btn-success(data-bind="click: $root.search.utils.go") Go
+
+// /ko

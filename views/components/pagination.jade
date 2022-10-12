@@ -1,0 +1,42 @@
+#paginator-tpl.tpl
+    .paginator
+
+        .pages.text-center
+            ul.pagination
+                // ko if: $data.utils.pagination.curPage() > 5
+                li
+                    a(href='#', data-bind='click: $data.utils.pagination.firstPage') First
+                // /ko
+                // ko if: $data.utils.pagination.curPage() > 5
+                li
+                    a(href='#', data-bind='click: $data.utils.pagination.prevPage')
+                        | <
+                        span.sr-only (previous)
+                // /ko
+                // ko foreach: $data.utils.pagination.pages
+                li(data-bind='css: { active: $parent.utils.pagination.curPage() === $data }')
+                    a(href='#', data-bind='text: $data, click: $parent.utils.pagination.toPage')
+                        | #
+                        span.sr-only(data-bind='visible: $parent.utils.pagination.curPage() === $data') (current)
+                // /ko
+                // ko if: ($data.utils.pagination.curPage() <= $data.utils.pagination.numPages() - 5) &&  $data.utils.pagination.numPages() > 10
+                li
+                    a(href='#', data-bind='click: $data.utils.pagination.nextPage')
+                        | >
+                        span.sr-only (next)
+                // /ko
+                // ko if: ($data.utils.pagination.curPage() <= $data.utils.pagination.numPages() - 5) &&  $data.utils.pagination.numPages() > 10
+                li
+                    a(href='#', data-bind='click: $data.utils.pagination.lastPage') Last
+                // /ko
+
+        .perPage
+            .row
+                .col-sm-4.col-sm-offset-4
+                    select.form-control.col-lg-4(data-bind='numericValue: $data.utils.pagination.perPage')
+                        option(value='5') 5 Results Per Page
+                        option(value='10') 10 Results Per Page
+                        option(value='25') 25 Results Per Page
+                        option(value='50') 50 Results Per Page
+        .stats
+            .text-center.results-summary(data-bind="html: $data.utils.pagination.stats.pages")

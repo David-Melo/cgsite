@@ -1,0 +1,16 @@
+.btn-group.btn-group-justified.hidden-print.add-bottom
+
+   a.btn.btn-primary(href="#",data-bind="click: function() { my.vm.print.go({mls:mls,agent:my.vm.agents.utils.random().id}) } ") <i class="icon-print"></i> Print Listing
+   a.btn.btn-primary(href="#",data-bind="click: my.vm.email.share.open ") <i class="icon-mail"></i> Email Listing
+
+   .btn-group
+
+      a.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown') <i class="icon-chat"></i> Share This Page &#160;
+         span.caret
+
+      ul.dropdown-menu.pull-right(role='menu',style="width:100%;")
+
+         li.facebook-share(data-bind="facebookShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+         li.twitter-share(data-bind="twitterShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+         li.gplus-share(data-bind="gplusShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+         li.linkedin-share(data-bind="linkedInShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")

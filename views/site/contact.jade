@@ -1,0 +1,62 @@
+extends ../layout
+
+block meta
+    title Contact Us | The Canero Group
+    meta(name='description', content='The Canero Group, a miami real estate company experienced in both commercial and residential real estate. Use our online property search and other tools to find the perfect property.')
+    meta(property='og:title', content="The Canero Group - Real Estate Investment Services")
+    meta(property='og:type', content='website')
+    meta(property='og:url', content="http://canerogroup.com")
+    meta(property='og:image', content='http://www.canerogroup.com/images/logo_square.jpg')
+    meta(property='og:site_name', content='The Canero Group')
+    meta(property='og:description', content="The Canero Group, a miami real estate company experienced in both commercial and residential real estate. Use our online property search and other tools to find the perfect property.")
+
+block content
+
+    h1.page-header.text-primary Contact The Canero Group
+
+    .panel.panel-default.add-bottom
+        .panel-body
+
+            .row
+                .col-lg-6
+
+                    if mode == 'agent'
+                        .agents.well.clearfix(data-id=agent.id,data-model="agent")
+                            img.pull-left.thumbnail.remove-bottom.agent-image(src="https://cms.canerogroup.com" + agent.image.url)
+                            h3.text-primary.pull-right= agent.phone
+                            h2.add-bottom= agent.name
+                            br.add-bottom
+                            h4.text-center= agent.title
+                            br.add-bottom
+                            br.add-bottom
+                            h3.text-center.text-success= agent.email
+
+                    form#contact-form(data-bind="inlineForm: { contact: '" + agent.email + "', subject: 'You have a new lead', template: 'contact-agent-form-tpl' }")
+                        .row
+                            .col-sm-12
+                                .form-group
+                                    label Full Name
+                                    input.form-control(name="name")
+                        .row
+                            .col-sm-6
+                                .form-group
+                                    label Email Address
+                                    input.form-control(name="email")
+                            .col-sm-6
+                                .form-group
+                                    label Contact Phone
+                                    input.form-control(name="phone")
+                        .form-group
+                            label Questions or Comments
+                            textarea.form-control(name="message",rows="2")
+                        button.btn.btn-primary.btn-block.btn-lg(type="submit") Send Message &#160;
+                            i.icon-mail
+                .col-lg-6
+
+
+
+                    h3 The Canero Group
+                        span.pull-right (305) 444-5004
+                    address
+                        div.lead.text-center 250 Giralda Ave. Coral Gables, FL 33134
+                    img.img-responsive.max-width(src="/images/map.jpg")

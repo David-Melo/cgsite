@@ -1,0 +1,316 @@
+doctype html
+html
+    head
+
+        meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
+
+        block meta
+
+        // STYLES
+        link(rel="stylesheet", href="/styles/bootstrap-slider-4.5.6.css")
+        link(rel="stylesheet", href="/styles/components/button-login.css")
+        link(rel="stylesheet", href="/styles/fontello/animation.css")
+        link(rel="stylesheet", href="/styles/fontello/fontello-codes.css")
+        link(rel="stylesheet", href="/styles/fontello/fontello-embedded.css")
+        link(rel="stylesheet", href="/styles/fontello/fontello-ie7-codes.css")
+        link(rel="stylesheet", href="/styles/fontello/fontello-ie7.css")
+        link(rel="stylesheet", href="/styles/fontello/fontello.css")
+        link(rel="stylesheet", href="/styles/importer.css")
+        link(rel="stylesheet", href="/styles/layout.css")
+        link(rel="stylesheet", href="/styles/metisMenu.css")
+        link(rel="stylesheet", href="/styles/modules/my.vm.planning.css")
+        link(rel="stylesheet", href="/styles/modules/my.vm.users.css")
+        link(rel="stylesheet", href="/styles/nprogress.css")
+        link(rel="stylesheet", href="/styles/utils.css")
+        // STYLES END
+        link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Oswald:400,700&subset=latin")
+        link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,700")
+        link(rel='stylesheet', href='https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css')
+
+        script.
+            window.search=!{ search ? JSON.stringify(search) : JSON.stringify({}) };
+
+        style.
+            @media (max-width:800px) {
+                .navbar-header {
+                    padding: 0 10px;
+                }
+            }
+
+    body#main-body(data-csrf=_csrf)
+
+        nav.navbar.navbar-default.navbar-static-top.remove-bottom
+            .container
+                .navbar-header(style="height:80px;")
+                    button.navbar-toggle.collapsed(data-toggle="collapse",data-target="#main-nav",style="margin: 23px 0;")
+                        span.sr-only Toggle Navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href="/")
+                        img(src="/images/logo.png")
+                #main-nav.collapse.navbar-collapse
+                    ul.nav.navbar-nav.navbar-right(style="margin: 15px 0;")
+                        li
+                            a(href="/") Home
+                        li
+                            a(href="/about") About Us
+                        li
+                            a(href="/agents") Our Agents
+                        li
+                            a(href="/services") Our Services
+                        li
+                            a(href="/contact") Contact Us
+
+        block header
+
+        .container
+
+            #page-content-preload
+                if results
+                 include search/search-preload
+
+            #page-content-wrapper(style="display:none")
+
+                .panel.panel-default
+
+                    .panel-body
+
+                        ul#search-tabs.nav.nav-tabs
+                            li.active
+                                a(href="#results",data-toggle="tab",data-bind="css: { disabled: my.vm.search.data.collection().length < 1 }") Search Results &#160;
+
+                        #search-tabs-content.tab-content
+
+                            #results.tab-pane.active
+
+                                .row
+
+                                    .col-sm-3
+
+                                        #facet-finance
+                                        #facet-parent
+                                        #facet-proptype
+                                        #facet-city
+                                        #facet-county
+                                        #facet-beds
+                                        #facet-baths
+                                        #facet-price
+                                        #clear-all
+
+                                    .col-sm-9
+
+                                        .well.well-sm.clearfix
+                                            #stats-container.pull-left
+                                            #perpage.pull-right
+
+                                        .results(data-bind='foreach: my.vm.search.data.collection')
+
+                                            .results-item.panel.panel-default(data-bind="style: { cursor: 'pointer'}, click: my.vm.search.utils.openResult")
+
+                                                .panel-body
+
+                                                    .pull-right
+                                                        .btn-group.share-options
+                                                            a.btn.btn-sm.btn-primary.tooltips(data-toggle='tooltip', data-placement='top', data-container='body' , data-original-title='Print This Listing',href="#",data-bind="click: function() { my.vm.print.go({mls:mls,agent:my.vm.agents.utils.random().id}) } ") <i class="icon-print"></i>
+                                                            a.btn.btn-sm.btn-primary.tooltips(data-toggle='tooltip', data-placement='top', data-container='body' , data-original-title='Email This Listing',href="#",data-bind="click: my.vm.email.share.open ") <i class="icon-mail"></i>
+                                                            .btn-group.share-options(data-toggle='tooltip', data-placement='top', data-container='body' , data-original-title='Share This Listing')
+                                                                a.btn.btn-sm.btn-primary.dropdown-toggle(data-bind="attr: { id: 'share-dropdown-'+sysid }",data-toggle='dropdown') <i class="icon-chat"></i>
+                                                                    span.caret
+                                                                ul.dropdown-menu.pull-right.share-options(role='menu')
+                                                                    li.facebook-share(data-bind="facebookShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+                                                                    //li.twitter-share(data-bind="twitterShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+                                                                    li.gplus-share(data-bind="gplusShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+                                                                    li.linkedin-share(data-bind="linkedInShare: { title: full_address, url: 'http://www.canerogroup.com/listings/'+mls }")
+
+                                                    // ko if: $data.images.length > 0
+                                                    img.thumbnail.img-responsive(width="185",data-bind="attr: { src: $data.images[0] }")
+                                                    // /ko
+
+                                                    // ko ifnot: $data.images.length > 0
+                                                    img.thumbnail.img-responsive(width="185",src="http://placehold.it/260x200&text=No+Image+Found")
+                                                    // /ko
+
+                                                    h2.price.text-success(data-bind="text: Globalize.format($data.price,'c0')")
+
+                                                    h4.address(data-bind="text: $data.full_address")
+
+                                                    span.updated.text-info Last Updated:
+                                                        b(data-bind="text: moment($data.updated).fromNow()")
+
+                                                    .details(data-bind="if: $data.parent === 'RES'")
+
+                                                        span Beds:
+                                                            b(data-bind="text: $data.beds")
+                                                        span Baths:
+                                                            b(data-bind="text: $data.baths")
+                                                        span Year:
+                                                            b(data-bind="text: $data.year")
+                                                        span Living Area:
+                                                            b(data-bind="text: Globalize.format(parseInt($data.living_area||0),'n0') + ' SqFt'")
+                                                        span MLS#:
+                                                            b(data-bind="text: $data.mls")
+
+                                                    .details(data-bind="if: $data.parent === 'COM'")
+                                                        span Year:
+                                                            b(data-bind="text: $data.year")
+                                                        span MLS#:
+                                                            b(data-bind="text: $data.mls")
+
+                                                    .description.text-muted(data-bind="html: S(description).truncate(120, '... <a href=\"#\">read more</a>').s")
+
+
+                                        #pagination-container
+
+            block content
+
+            .row
+
+                .col-sm-3
+
+                    if mode == 'agent'
+                        .fl.add-bottom.clearfix
+                            .fl-icon.fl-icon-img.pull-left(style="background-image:url(https://cms.canerogroup.com" + agent.image.url + ")")
+                            .fl-text
+                                span #{agent.name}
+                                span #{agent.phone}
+
+                    .fl.add-bottom.clearfix
+                        .fl-icon.pull-left
+                            i.icon-globe
+                        .fl-text
+                            span 250 Giralda Ave
+                            span Coral Gables, FL 33134
+
+                    .fl.add-bottom.clearfix
+                        .fl-icon.pull-left
+                            i.icon-mail
+                        .fl-text
+                            span
+                                if mode == 'global'
+                                    a(href="/contact") info@canerogroup.com
+                                if mode == 'agent'
+                                    a(href="/contact") #{agent.email}
+
+                    if mode == 'global'
+                        .fl.add-bottom.clearfix
+                            .fl-icon.pull-left
+                                i.icon-phone
+                            .fl-text
+                                span (305) 444-5004
+
+                .col-sm-2
+
+                    ul.footer-links.list-unstyled
+                        li
+                            a(href="#") Home
+                        li
+                            a(href="/about") About Us
+                        li
+                            a(href="/agents") Our Agents
+                        li
+                            a(href="/services") Our Services
+                        li
+                            a(href="/contact") Contact Us
+
+                .col-sm-2
+
+                    ul.footer-links.list-unstyled
+                        li
+                            a(href="#") Single Family Home
+                        li
+                            a(href="#") Condo / Townhouse
+                        li
+                            a(href="#") Office
+                        li
+                            a(href="#") Retail
+                        li
+                            a(href="#") Industrial
+                        li
+                            a(href="#") Land
+                        li
+                            a(href="#") Agricultural
+
+                .col-sm-2
+
+                    ul.footer-links.list-unstyled
+                        li
+                            a(href="#") Advanced Search
+                        li
+                            a(href="#") My Account
+                        li
+                            a(href="#") Sitemap
+                        li
+                            a(href="#") Privacy Policy
+                        li
+                            a(href="#") Terms & Conditions
+
+                .col-sm-3
+
+                    .btn-group-vertical.btn-block.hidden-print
+                        a.btn.btn-default.btn-block(href="https://www.facebook.com/pages/The-Canero-Group/509089669105087",target="_blank")
+                            i.icon-facebook-circled
+                            | Facebook
+                        a.btn.btn-default.btn-block(href="http://instagram.com/canerogroup",target="_blank")
+                            i.icon-instagram
+                            | Instagram
+                        a.btn.btn-default.btn-block(href="https://twitter.com/canerogroup",target="_blank")
+                            i.icon-twitter-circled
+                            | Twitter
+                        a.btn.btn-default.btn-block(href="http://www.linkedin.com/company/the-canero-group",target="_blank")
+                            i.icon-linkedin-circled
+                            | Linked In
+
+        include email/index
+
+        // ko stopBinding: true
+        include templates/forms/form-group
+        include components/pagination
+        // /ko
+
+        // ko stopBinding: true
+        include search/results/results-item
+        // /ko
+
+        include search/mortgage-calculator
+        include search/email-share
+
+
+    // SCRIPTS
+    script(src="/js/dependencies/sails.io.js")
+    script(src="/js/dependencies/head-1.0.3.min.js")
+    script(src="/js/dependencies/jquery-1.11.1.min.js")
+    script(src="/js/dependencies/jquery-ui.js")
+    script(src="/js/libs/async.js")
+    script(src="/js/libs/bootstrap-3.3.2.js")
+    script(src="/js/libs/bootstrap-slider-4.5.6.js")
+    script(src="/js/libs/cloudinary.js")
+    script(src="/js/libs/fit.js")
+    script(src="/js/libs/galleria-1.4.2.js")
+    script(src="/js/libs/globalize.js")
+    script(src="/js/libs/head.js")
+    script(src="/js/libs/hogan-3.0.2.js")
+    script(src="/js/libs/jquery.cloudinary.js")
+    script(src="/js/libs/jquery.fileupload.js")
+    script(src="/js/libs/jquery.iframe-transport.js")
+    script(src="/js/libs/metisMenu-1.1.1.js")
+    script(src="/js/libs/moment-2.8.3.min.js")
+    script(src="/js/libs/mustache-0.8.2.min.js")
+    script(src="/js/libs/nprogress-0.1.6.js")
+    script(src="/js/libs/sammy-0.7.6.js")
+    script(src="/js/libs/sharrre.js")
+    script(src="/js/libs/string.min.js")
+    script(src="/js/libs/twix.min.js")
+    script(src="/js/libs/underscore-1.7.0.min.js")
+    // SCRIPTS END
+    script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-xcWp5h8nB1Asu61Ole88vim7VkD1A_A")
+    script(src='https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js')
+
+
+    script(type='text/javascript').
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-38287534-1', 'canerogroup.com');
+        ga('send', 'pageview');

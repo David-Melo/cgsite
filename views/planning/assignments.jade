@@ -1,0 +1,82 @@
+.planers-list
+
+    .header(data-bind="affix: { top: 50, sibling: '.page-content' }")
+
+        ol.breadcrumb
+            li Home
+            li Planning
+            li Assignments
+
+        .content-header.panel.panel-default
+            .panel-body
+                .content-header-title
+                    h1 Plan Assignments
+
+    .page-content.inset
+
+        .panel.panel-primary
+            .panel-heading
+                h1.panel-title Unassigned Plans
+            .panel-body
+
+                table.table.table-bordered.remove-bottom
+                    thead
+                        tr
+                            th Client Name
+                            th.text-center Request Date
+                            th.text-center Due Date
+                            th.text-center Status
+                        // ko if: $data.length == 0
+                        tr
+                            th.text-center(colspan="4") No Assigned Plans
+                        // /ko
+                    tbody.items(data-bind="sortable: { data: plans.data.collection , options: my.vm.plans.utils.drop.sortable }")
+                        tr
+                            td(data-bind="text: client_name")
+                            td.text-center(data-bind="text: moment(request_date()).format('L')")
+                            td.text-center(data-bind="text: moment(due_date()).format('L')")
+                            td.text-center(data-bind="text: status")
+
+        .panel.panel-default
+            .panel-heading
+                h1.panel-title Active Planners
+            .panel-body
+
+                .planners
+
+                    ul.nav.nav-tabs(data-bind="foreach: users.data.planners")
+                        li(data-bind="tabsLink: { set: 'assignments', index: $index }, css: { 'active': $index() == 0 }")
+                            a(data-toggle="tab",data-bind="text: data.name")
+
+                    .tab-content(data-bind="foreach: users.data.planners")
+                        .tab-pane.fade(data-bind="tabsPane: { set: 'assignments', index: $index },css: { 'in active': $index() == 0 }")
+
+                            img.pull-right(style="max-height: 50px",data-bind="attr: { src: data.image }")
+                            a(data-bind="attr: { href: '/#/plans/assigned/' + data.id() }")
+                                h3(data-bind="text: data.first_name() + ' ' + data.last_name()")
+
+                            .assignments(data-bind="myAssignments: $data")
+
+
+
+// ko stopBinding: true
+#my-assignments-tpl.tpl
+
+    table.table.table-bordered.remove-bottom
+        thead
+            tr
+                th Client Name
+                th.text-center Request Date
+                th.text-center Due Date
+                th.text-center Status
+            // ko if: $data.length == 0
+            tr
+                th.text-center(colspan="4") No Assigned Plans
+            // /ko
+        tbody.items(data-bind="sortable: { data: data.plans , beforeMove: my.vm.plans.utils.drop.moved, options: my.vm.plans.utils.drop.sortable }")
+            tr
+                td(data-bind="text: client_name")
+                td.text-center(data-bind="text: moment(request_date()).format('L')")
+                td.text-center(data-bind="text: moment(due_date()).format('L')")
+                td.text-center(data-bind="text: status")
+// /ko

@@ -1,0 +1,37 @@
+#form-group-tpl.tpl
+
+    .form-group(data-bind="validationElement: $data.value")
+
+        // Debug Field pre(data-bind="text: ko.toJSON($data)")
+
+        // ko if: $data.label
+        label.control-label
+            span(data-bind="text: $data.label")
+            span.text-danger(data-bind="if: $data.required") *
+        // /ko
+
+        // ko if: $data.type == 'text'
+        input.form-control(data-bind="value: $data.value, valueUpdate: 'afterkeydown', disable: $data.disabled, attr: { placeholder: $data.placeholder }")
+        // /ko
+
+        // ko if: $data.type == 'step'
+        input.form-control(type="number",data-bind="numericValue: $data.value, valueUpdate: 'afterkeydown', disable: $data.disabled, attr: { min: $data.min || 0, max: $data.max || null, placeholder: $data.placeholder }")
+        // /ko
+
+        // ko if: $data.type == 'prepend-text'
+        .input-group
+            span.input-group-addon(data-bind="text: $data.prepend")
+            input.form-control(data-bind="value: $data.value, valueUpdate: 'afterkeydown', disable: $data.disabled, attr: { placeholder: $data.placeholder }")
+        // /ko
+
+        // ko if: $data.type == 'password'
+        input.form-control(type="password",data-bind="value: $data.value, valueUpdate: 'afterkeydown', disable: $data.disabled, attr: { placeholder: $data.placeholder }")
+        // /ko
+
+        // ko if: $data.type == 'textarea'
+        textarea.form-control(data-bind="value: $data.value, valueUpdate: 'afterkeydown', disable: $data.disabled, attr: { placeholder: $data.placeholder }",rows="3")
+        // /ko
+
+        // ko if: $data.type == 'select'
+        select.form-control(data-bind="value: $data.value, options: $data.options, optionsValue: $data.optionsValue || 'value', optionsText: $data.optionsText || 'label', optionsCaption: $data.optionsCaption || 'Choose One...', valueUpdate: 'afterkeydown', disable: $data.disabled")
+        // /ko

@@ -1,0 +1,69 @@
+.numberCircle {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 100%;
+    padding: 8px;
+    font-size: 30px;
+    border: 5px solid #666;
+    background: #666;
+    position: relative;
+    margin-left:0px;
+    color: #FFF;
+    margin-bottom: 5px;
+}
+.numberCircle .height_fix {
+    margin-top: 100%;
+}
+.numberCircle.red {
+    border: 5px solid #d9534f;
+    background: #d9534f;
+}
+.numberCircle.green {
+    border: 5px solid #a8bc7b;
+    background: #a8bc7b;
+}
+.numberCircle.blue {
+    border: 5px solid #70afc4;
+    background: #70afc4;
+}
+.numberCircle.orange {
+    border: 5px solid #f0ad4e;
+    background: #f0ad4e;
+}
+.numberCircle.purple {
+    border: 5px solid #a696ce;
+    background: #a696ce;
+}
+.numberCircle.yellow {
+    border: 5px solid yellow;
+    background: yellow;
+}
+.numberCircle .content {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin-top: -15px; /* Note, this must be half the font size */
+}
+.panel-stat .panel-heading {
+    padding: 44px 15px;
+}
+.panel-stat small {
+    text-transform: uppercase;
+    font-size: 15px;
+}
+.panel-stat h1 {
+    margin: 0;
+    line-height: 38px;
+    color: #FFF;
+    font-size: 40px;
+}
+.panel-stat h2 {
+    margin: 0;
+    line-height: 38px;
+    color: #FFF;
+    font-size: 40px;
+}

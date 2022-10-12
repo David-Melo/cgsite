@@ -1,0 +1,59 @@
+.panel.panel-default
+    .panel-body
+
+        .well.well-sm.clearfix
+            strong.well-heading !{Globalize.format(results.nbHits,'n0')}&#160;
+            span.well-heading Listings Found That Match Your Parameters
+            buton.btn.btn-sm.btn-primary.pull-right See All Matching Results
+
+        .results.row
+
+            each result in results.hits
+
+                .col-sm-6
+
+                    a.listing-link(href="/listings/"+result.mls,target="_blank",title=result.full_address)
+
+                        .results-item.panel.panel-default
+
+                            .panel-body
+
+                                if result.images.length > 0
+                                    img.thumbnail.img-responsive(width="185",src=result.images[0])
+
+                                if result.images.length <= 0
+                                    img.thumbnail.img-responsive(width="185",src="http://placehold.it/260x200&text=No+Image+Found")
+
+                                h2.price.text-success=Globalize.format(result.price,'c0')
+
+                                h4.address=result.full_address
+
+                                span.updated.text-info Last Updated:
+                                    b=moment(result.updated).fromNow()
+
+                                if result.parent === 'RES'
+                                    .details
+
+                                        span Beds:
+                                            b=result.beds
+                                        span Baths:
+                                            b=result.baths
+                                        span Living Area:
+                                            b=Globalize.format(parseInt(result.living_area||0),'n0') + ' SqFt'
+                                        br
+                                        span Year:
+                                            b=result.year
+                                        span MLS#:
+                                            b=result.mls
+
+                                if result.parent === 'COM'
+                                    .details
+                                        span Year:
+                                            b=result.year
+                                        span MLS#:
+                                            b=result.mls
+
+        .row
+
+            .col-sm-6.col-sm-offset-3
+                buton.btn.btn-block.btn-lg.btn-primary.pull-right See All Matching Results

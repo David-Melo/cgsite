@@ -1,0 +1,41 @@
+extends ../layout
+
+block meta
+    title #{listing.address} on The Canero Group
+    link(rel='canonical', href=listing.link)
+    meta(name='description', content=listing.description)
+    meta(property='og:title', content=listing.address + ' on The Canero Group')
+    meta(property='og:type', content='article')
+    meta(property='og:url', content=listing.link)
+    meta(property='og:image', content=listing.images[0])
+    meta(property='og:site_name', content='The Canero Group')
+    meta(property='og:description', content=listing.description)
+
+block content
+
+    h1.page-header.text-primary=listing.proptype
+
+    .header-affix.add-bottom(style="height:107px")
+        include listings-info-header
+
+    include listings-info-social
+
+    if listing.video
+        include listings-info-video
+
+    .row
+
+        .col-sm-8
+            include listings-info-gallery
+
+        .col-sm-4
+            include listings-info-agent
+
+    include listings-info-details
+
+    include listings-info-map
+
+    include listings-info-footer
+
+    include ../search/mortgage-calculator
+    include ../search/email-share

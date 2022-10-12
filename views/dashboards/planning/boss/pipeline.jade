@@ -1,0 +1,54 @@
+.panel.panel-default
+    .panel-heading
+        h1.panel-title Pipeline
+    .panel-body(data-bind="foreach: planning.data.planners")
+        .well.well-sm
+            img.pull-right(style="max-height: 40px;margin-bottom:10px;",data-bind="attr: { src: data.image }")
+            a(data-bind="attr: { href: '/#/plans/assigned/' + data.id() }")
+                h3(data-bind="text: data.first_name() + ' ' + data.last_name()")
+            div(data-bind="assignments: { id: data.id }")
+
+h1(style="font-weight:bolder") Pipeline
+div(data-bind="foreach: planning.data.planners")
+    .panel.panel-default
+        .panel-body
+            img.pull-right(style="max-height: 50px",data-bind="attr: { src: data.image }")
+            a(data-bind="attr: { href: '/#/plans/assigned/' + data.id() }")
+                h3(data-bind="text: data.first_name() + ' ' + data.last_name()")
+            div(data-bind="assignments: { id: data.id }")
+
+#assignments-tpl.tpl
+    table.table.table-bordered.remove-bottom
+        thead
+            tr
+                th Client Name
+                th.text-center Request Date
+                th.text-center Due Date
+                th.text-center Status
+            // ko if: $data.length == 0
+            tr
+                th.text-center(colspan="4") No Assigned Plans
+            // /ko
+        tbody(data-bind="foreach: $data")
+            tr
+                td(data-bind="text: client_name")
+                td.text-center(data-bind="text: moment(request_date()).format('L')")
+                td.text-center(data-bind="text: moment(due_date()).format('L')")
+                td.text-center(data-bind="text: status")
+
+//.panel.panel-default
+    .panel-heading
+        h1.panel-title Johnson, Mike
+            i.icon-user.pull-right
+    table.table.table-bordered
+        thead
+            th Client Name
+            th Request Date
+            th Due Date
+            th Status
+        tbody(data-bind="foreach: planning.data.collection")
+            tr
+                td(data-bind="text: client_name")
+                td(data-bind="text: moment(request_date()).format('L')")
+                td(data-bind="text: moment(due_date()).format('L')")
+                td(data-bind="text: status")

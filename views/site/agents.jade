@@ -1,0 +1,34 @@
+extends ../layout
+
+block meta
+    title Our Agents | The Canero Group
+    meta(name='description', content='Find an experienced real estate agent in South Florida. Our Realtors are qualified for commercial, residential, and investment properties.')
+    meta(property='og:title', content="The Canero Group - Real Estate Investment Services")
+    meta(property='og:type', content='website')
+    meta(property='og:url', content="http://canerogroup.com")
+    meta(property='og:image', content='http://www.canerogroup.com/images/logo_square.jpg')
+    meta(property='og:site_name', content='The Canero Group')
+    meta(property='og:description', content="Find an experienced real estate agent in South Florida. Our Realtors are qualified for commercial, residential, and investment properties.")
+
+block content
+
+    h1.page-header.text-primary Our Agents
+
+    .panel.panel-default
+        .panel-body
+
+            p.lead.remove-bottom Our vast and extensive experience is unparalleled in the industry.
+                | Our real estate professionals are selected because of their qualifications and understanding of the need to provide expert real estate services and advice to sophisticated institutional and high-net worth individual investors globally.
+
+    .row
+        each agent in agents
+            .col-lg-6
+                .agents.well.well-sm.clearfix(data-id=agent.id,data-model="agent")
+                    img.pull-left.thumbnail.remove-bottom.agent-image(src="https://cms.canerogroup.com" + agent.image.url)
+                    h3.text-primary.pull-right= agent.phone
+                    h2.add-bottom.agent-name= agent.name
+                    br.add-bottom
+                    h4.text-center= agent.title
+                    br.add-bottom
+                    br.add-bottom
+                    h3.text-center.text-success= agent.email

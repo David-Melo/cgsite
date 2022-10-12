@@ -1,0 +1,24 @@
+.well.content-header.clearfix
+
+    ol.breadcrumb.remove-bottom
+        li
+            a(href='#/') Admin Home
+        li.active
+            | System Settings
+
+    .content-header-controls.pull-right(data-bind="visible: settings.data.site.dirtyFlag.isDirty()")
+
+        .btn-group-header.pull-right
+            button.btn.btn-danger(data-bind="click: function() { $('#site-settings').submit() }") Save Changes <i class="icon-check"></i>
+
+        .btn-group-header.pull-right
+            button.btn.btn-default(data-bind="click: settings.data.site.dirtyFlag.revert ") Discard Pending Changes <i class="icon-trash"></i>
+
+    .content-header-title
+        h1 System Settings
+
+    .content-header-sub
+        span Manage your entire site and its settings..
+
+    form#site-settings(action="/settings/set",method="POST",data-bind="socketForm: { model: settings.data.site, success: settings.utils.site.success, fail: settings.utils.site.fail }")
+        input(type="hidden",name="_csrf",value=_csrf)

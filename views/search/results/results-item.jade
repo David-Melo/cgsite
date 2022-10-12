@@ -1,0 +1,20 @@
+#search-result-item-tpl.tpl
+
+   include results-info-header
+
+   include results-info-social
+
+   .row
+
+      .col-sm-8
+         include results-info-gallery
+
+      .col-sm-4
+         if agent
+            include results-info-agent
+
+   include results-info-details
+
+   include results-info-map
+
+   include results-info-footer

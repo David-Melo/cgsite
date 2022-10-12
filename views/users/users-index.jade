@@ -1,0 +1,160 @@
+.users
+    .header(data-bind="affix: { top: 50, sibling: '.page-content' }")
+        ol.breadcrumb
+            li
+                a Admin Home
+            li User Management
+        .content-header.panel.panel-default
+            .panel-body
+                .content-header-controls.pull-right
+                    .pull-right
+                        button.btn.btn-sm.btn-primary(data-toggle="modal",data-target="#user-add-modal",data-backdrop="static") Create New User <i class="icon-plus"></i>
+                //.pull-right.user-view-controls
+                    .btn-group.btn-group-header
+                        button.btn.btn-default.tooltips(data-toggle="tooltip",data-placement="bottom",title="Show Cards View",data-container="body",data-bind="click: function() { users.utils.view.mode('cards') }, css: { active: users.utils.view.mode()=='cards'}") <i class="icon-th-large"></i>
+                        button.btn.btn-default.tooltips(data-toggle="tooltip",data-placement="bottom",title="Show Table View",data-container="body",data-bind="click: function() { users.utils.view.mode('table') }, css: { active: users.utils.view.mode()=='table'}") <i class="icon-th-list"></i>
+                .content-header-title
+                    h1 User Management
+    .page-content.inset
+        // ko if: users.utils.view.mode() == 'cards'
+        #users-cards
+            .row(data-bind="foreach: users.data.collection")
+                .user-item.col-sm-4
+                    .panel.panel-default
+                        .panel-heading
+                            .user-controls.pull-right
+                                a.tooltips(href="#",data-toggle="modal",data-bind="attr: { 'data-target' : '#'+data.id()+'-user-update-modal' }, tooltip: { title: 'Edit User' } ") <i class="icon-edit"></i>
+                                a.tooltips(href="#",data-toggle="modal",data-bind="attr: { 'data-target' : '#'+data.id()+'-user-destroy-modal' }, tooltip: { title: 'Delete User' }") <i class="icon-trash"></i>
+                            h1.panel-title
+                                span.name(data-bind='text: data.first_name() + " " + data.last_name()')
+                                span.status
+                                    span.label(data-bind='css: (data.online())? "label-success":"label-default", text: (data.online())? "ONLINE":"OFFLINE" ')
+                        .panel-body
+                            .user-image.pull-right
+                                // ko if: data.image()
+                                img.thumbnail(data-bind="attr: { src: data.image() }")
+                                // /ko
+                                // ko ifnot: data.image()
+                                span.thumbnail
+                                    i.icon-user
+                                // /ko
+                            .user-details.pull-left
+                                h4(data-bind="text: data.phone")
+                                strong(data-bind="text: data.role")
+                                p(data-bind="text: data.email")
+                                span.badge(data-bind="text: data.department")
+                                span.badge(data-bind="text: data.level")
+                    .modal.fade(data-bind='attr: { id: data.id()+"-user-update-modal", "aria-labelledby": data.id()+"-user-update-modal-label" }', tabindex='-1', role='dialog', aria-hidden='true',data-backdrop="static")
+                        .modal-dialog
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button',data-dismiss='modal',aria-hidden='true',data-bind="click: $data.utils.revert") ×
+                                    h4.modal-title(data-bind='attr: { id: data.id()+"-user-update-modal-label" }') Edit Existing User
+                                form(action='/users/update', method='POST', data-bind='socketForm: { model: $data, reset: false, success: my.vm.users.utils.saved, fail: my.vm.users.utils.fail }')
+                                    .modal-body
+                                        .error-container
+                                        .row
+                                            .col-xs-4
+                                                .field(data-bind="formField: { value: $data.data.first_name, label: 'First Name', type: 'text', required: true }")
+                                            .col-xs-4
+                                                .field(data-bind="formField: { value: $data.data.last_name, label: 'Last Name', type: 'text', required: true }")
+                                            .col-lg-4
+                                                .field(data-bind="formField: { value: $data.data.email, label: 'Email', type: 'text', required: true }")
+                                        .row
+                                            .col-xs-4
+                                                .field(data-bind="formField: { value: $data.data.role, label: 'Role', type: 'select', options: $root.users.utils.roles, optionsText: 'label', optionsValue: 'value', optionsCaption: 'Select One...' }")
+                                            .col-xs-4
+                                                .field(data-bind="formField: { value: $data.data.department, label: 'Department', type: 'select', options: $root.users.utils.departments, optionsText: 'label', optionsValue: 'value', optionsCaption: 'Select One...' }")
+                                            .col-xs-4
+                                                .field(data-bind="formField: { value: $data.data.level, label: 'Level', type: 'select', options: $root.users.utils.levels, optionsText: 'label', optionsValue: 'value', optionsCaption: 'Select One...' }")
+                                        .checkbox
+                                            label
+                                                input(type="checkbox",data-bind='checked: $data.resetPass')
+                                                | Reset User Password
+                                        .row(data-bind="visible: $data.checkPass()")
+                                            .col-xs-6
+                                                .field(data-bind="formField: { value: $data.data.password, label: 'Password', type: 'password', required: true }")
+                                            .col-xs-6
+                                                .field(data-bind="formField: { value: $data.data.confirmation, label: 'Confirm Password', type: 'password', required: true }")
+                                    .modal-footer
+                                        button.btn.btn-danger(data-bind="click: $data.utils.revert",data-dismiss="modal") Cancel Changes
+                                        input.btn.btn-primary(data-bind='enable: $data.dirtyFlag.isDirty', type='submit', value='Save Changes')
+                    .modal.fade(data-bind='attr: { id: data.id()+"-user-destroy-modal", "aria-labelledby": data.id()+"-user-destroy-modal-label" }', tabindex='-1', role='dialog', aria-hidden='true',data-backdrop="static")
+                        .modal-dialog
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button',data-dismiss='modal',aria-hidden='true',data-bind="click: $data.utils.revert") ×
+                                    h4.modal-title.text-danger(data-bind='attr: { id: data.id()+"-user-destroy-modal-label" }') Delete Existing User
+                                form(action="/users/destroy",method='POST',data-bind='socketForm: { model: $data, success: my.vm.users.utils.destroyed, fail: my.vm.users.utils.fail }')
+                                    .modal-body
+                                        .error-container
+                                        p.text-danger Warning! You are about to permanently delete the following user:
+                                        h4(data-bind="text: $data.data.first_name")
+                                        span(data-bind="text: $data.data.email")
+                                    .modal-footer
+                                        button.btn.btn-danger(data-bind="click: $data.utils.revert",data-dismiss="modal") Cancel
+                                        input.btn.btn-primary(type='submit', value='Delete User')
+        // /ko
+        // ko if: users.utils.view.mode() == 'table'
+        #users-table
+            table.table.table-striped.table-bordered.table-hover
+                thead
+                    tr
+                        th First Name
+                        th Last Name
+                        th Status
+                        th Email
+                        th Role
+                        th Created
+                        th(width="20%") Actions
+                tbody(data-bind="foreach: users.data.collection")
+                    tr
+                        td(data-bind="text: data.first_name")
+                        td(data-bind="text: data.last_name")
+                        td
+                            span.label(data-bind="css: (data.online())? 'label-success':'label-default', text: (data.online())? 'ONLINE':'OFFLINE' ")
+                        td(data-bind="text: data.email")
+                        td(data-bind="text: data.role")
+                        td(data-bind="text: moment(data.createdAt()).format('L')")
+                        td
+                            .btn-group.btn-group-justified
+                                a.btn.btn-default(data-bind="click: $root.users.utils.update") <i class="icon-edit"></i> Edit
+                                a.btn.btn-danger(data-bind="click: $root.users.utils.destroy") <i class="icon-trash"></i> Delete
+        // /ko
+#user-add-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='user-add-modal', aria-hidden='true')
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4#user-add-modal.modal-title Create New User
+            form(action="/users/create",method="POST",data-bind="socketForm: { model: users.new, success: users.utils.success, fail: users.utils.fail }")
+                .modal-body
+                    .error-container
+                    input(type="hidden",name="_csrf",value=_csrf)
+                    fieldset(data-bind="with: users.new")
+                        .row
+                            .col-xs-6
+                                .field(data-bind="formField: { value: $data.data.first_name, label: 'First Name', type: 'text', required: true }")
+                            .col-xs-6
+                                .field(data-bind="formField: { value: $data.data.last_name, label: 'Last Name', type: 'text', required: true }")
+                        .row
+                            .col-xs-6
+                                .field(data-bind="formField: { value: $data.data.email, label: 'Email', type: 'text', required: true }")
+                            .col-xs-6
+                                .field(data-bind="formField: { value: $data.data.phone, label: 'Phone', type: 'text'}")
+                        .row
+                            .col-xs-6
+                                .field(data-bind="formField: { value: $data.data.password, label: 'Password', type: 'password', required: true }")
+                            .col-xs-6
+                                .field(data-bind="formField: { value: $data.data.confirmation, label: 'Confirm Password', type: 'password', required: true }")
+                        .row
+                            .col-xs-4
+                                .field(data-bind="formField: { value: $data.data.role, label: 'Role', type: 'select', options: $root.users.utils.roles, optionsText: 'label', optionsValue: 'value', optionsCaption: 'Select One...' }")
+                            .col-xs-4
+                                .field(data-bind="formField: { value: $data.data.department, label: 'Department', type: 'select', options: $root.users.utils.departments, optionsText: 'label', optionsValue: 'value', optionsCaption: 'Select One...' }")
+                            .col-xs-4
+                                .field(data-bind="formField: { value: $data.data.level, label: 'Level', type: 'select', options: $root.users.utils.levels, optionsText: 'label', optionsValue: 'value', optionsCaption: 'Select One...' }")
+
+
+                .modal-footer
+                    input.btn.btn-primary(type="submit",value="Save User")

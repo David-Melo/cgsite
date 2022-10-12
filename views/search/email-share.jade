@@ -1,0 +1,33 @@
+#email-share-modal.modal.fade(tabindex='-1', role='dialog', data-backdrop='static', aria-labelledby='register-modal-label', aria-hidden='true')
+
+    .modal-dialog(style="width:620px")
+        .modal-content
+
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') x
+                h4#register-modal-label.modal-title <i class="icon-mail"></i> Email This Listing
+
+            .modal-body
+
+                form.email-listing
+
+                    .form-group
+                        label(for="sender") Your Email Address
+                        input#sender.form-control(name="sender",data-bind="value: email.share.data.sender",placeholder="email@domain.com")
+                    .form-group
+                        label(for="recipients") Recipients' Email Addresses (comma separated)
+                        input#recipients.form-control(name="recipients",data-bind="value: email.share.data.recipients",placeholder="email@domain.com")
+                    .form-group
+                        label(for="message") Custom Message (optional)
+                        textarea#listing.form-control(rows=2,data-bind="value: email.share.data.message, valueUpdate: 'afterkeydown'",placeholder="Optional")
+                    .panel.panel-default
+                        .panel-heading Message Preview
+                        .panel-body
+                            p Hello, I was looking at this property on The Canero Group and wanted to share it with you.
+                            p
+                                a(data-bind="attr: { href: email.share.data.link, title: email.share.data.address }",target="_blank") Click here to see <span data-bind="text: email.share.data.address"></span> on CaneroGroup.com
+                            p(data-bind="html: email.share.data.message")
+
+            .modal-footer
+
+                button.btn.btn-lg.btn-primary.pull-right(data-bind="click: email.share.send") Send Message <i class="icon-mail"></i>

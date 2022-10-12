@@ -1,0 +1,45 @@
+h1(style="font-weight:bolder") My Pipeline
+.panel.panel-default
+    .panel-body
+        table.table.table-bordered.remove-bottom
+            thead
+                tr
+                    th Client Name
+                    th Campaign
+                    th Sales Rep
+                    th.text-center Budget
+                    th Media Requested
+                    th.text-center Requested Date
+                    th.text-center Due Date
+                    th.text-center Status
+                // ko if: planning.data.myplans().length == 0
+                tr
+                    th.text-center(colspan="4") No Assigned Plans
+                // /ko
+            tbody(data-bind="foreach: planning.data.myplans")
+                tr
+                    td(data-bind="text: client_name")
+                    td(data-bind="text: rfp_name")
+                    td(data-bind="text: salesrep")
+                    td.text-right(data-bind="text: Globalize.format(budget(),'c2')")
+                    td(data-bind="text: media_type")
+                    td.text-center(data-bind="text: moment(request_date()).format('L')")
+                    td.text-center(data-bind="text: moment(due_date()).format('L')")
+                    td.text-center(data-bind="text: status")
+
+//.panel.panel-default
+    .panel-heading
+        h1.panel-title Johnson, Mike
+            i.icon-user.pull-right
+    table.table.table-bordered
+        thead
+            th Client Name
+            th Request Date
+            th Due Date
+            th Status
+        tbody(data-bind="foreach: planning.data.collection")
+            tr
+                td(data-bind="text: client_name")
+                td(data-bind="text: moment(request_date()).format('L')")
+                td(data-bind="text: moment(due_date()).format('L')")
+                td(data-bind="text: status")

@@ -1,0 +1,1180 @@
+doctype html
+html
+    head
+
+        meta(charset='UTF-8')
+        title GroveSky
+
+        meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
+
+        block meta
+
+        link(href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css", rel="stylesheet", integrity="sha384-XYCjB+hFAjSbgf9yKUgbysEjaVLOXhCgATTEBpCqT1R3jvG5LGRAK5ZIyRbH5vpX", crossorigin="anonymous")
+        link(href='https://fonts.googleapis.com/css?family=Questrial', rel='stylesheet', type='text/css')
+
+        style.
+            html {
+
+            }
+
+            body {
+                font-family: "Questrial", sans-serif;
+                height: 100%;
+                background: #336687 url("/images/grovesky/pattern.png");
+                color: #000;
+            }
+
+            h1, h2, h3, h4, h5 {
+                font-family: "Questrial", sans-serif;
+                margin-top: 0;
+            }
+
+            ul {
+                padding: 0;
+            }
+
+            ul.features {
+                padding-left: 20px;
+            }
+
+            .logo-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 566px;
+                height: 164px;
+                margin-top: -82px;
+                margin-left: -283px;
+            }
+
+            *, *::after, *::before {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            html {
+                font-size: 62.5%;
+            }
+
+            body {
+                font-size: 1.6rem;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+            .cd-header {
+                position: absolute;
+                z-index: 2;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 50px;
+                background-color: #21272c;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            @media only screen and (min-width: 768px) {
+                .cd-header {
+                    height: 70px;
+                    background-color: transparent;
+                }
+            }
+
+            #cd-logo {
+                float: left;
+                margin: 13px 0 0 5%;
+            }
+
+            #cd-logo img {
+                display: block;
+            }
+
+            @media only screen and (min-width: 768px) {
+                #cd-logo {
+                    margin: 23px 0 0 5%;
+                }
+            }
+
+            .cd-primary-nav {
+                /* mobile first - navigation hidden by default, triggered by tap/click on navigation icon */
+                float: right;
+                margin-right: 5%;
+                width: 44px;
+                height: 100%;
+                background: url("/images/grovesky/cd-icon-menu.svg") no-repeat center center;
+            }
+
+            .cd-primary-nav ul {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                -webkit-transform: translateY(-100%);
+                -moz-transform: translateY(-100%);
+                -ms-transform: translateY(-100%);
+                -o-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            .cd-primary-nav ul.is-visible {
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+                -webkit-transform: translateY(50px);
+                -moz-transform: translateY(50px);
+                -ms-transform: translateY(50px);
+                -o-transform: translateY(50px);
+                transform: translateY(50px);
+            }
+
+            .cd-primary-nav a {
+                display: block;
+                height: 50px;
+                line-height: 50px;
+                padding-left: 5%;
+                background: #21272c;
+                border-top: 1px solid #333c44;
+                color: #ffffff;
+            }
+
+            @media only screen and (min-width: 768px) {
+                .cd-primary-nav {
+                    /* reset navigation values */
+                    width: auto;
+                    height: auto;
+                    background: none;
+                }
+
+                .cd-primary-nav ul {
+                    position: static;
+                    width: auto;
+                    -webkit-transform: translateY(0);
+                    -moz-transform: translateY(0);
+                    -ms-transform: translateY(0);
+                    -o-transform: translateY(0);
+                    transform: translateY(0);
+                    line-height: 70px;
+                }
+
+                .cd-primary-nav ul.is-visible {
+                    -webkit-transform: translateY(0);
+                    -moz-transform: translateY(0);
+                    -ms-transform: translateY(0);
+                    -o-transform: translateY(0);
+                    transform: translateY(0);
+                }
+
+                .cd-primary-nav li {
+                    display: inline-block;
+                    margin-left: 1em;
+                }
+
+                .cd-primary-nav a {
+                    display: inline-block;
+                    height: auto;
+                    font-weight: 600;
+                    line-height: normal;
+                    background: transparent;
+                    padding: .6em 1em;
+                    border-top: none;
+                }
+            }
+
+            /* --------------------------------
+
+            Slider
+
+            -------------------------------- */
+            .cd-hero {
+                position: relative;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                background: url('/images/grovesky/brillant.png');
+            }
+
+            .cd-hero-slider {
+                position: relative;
+                height: 360px;
+                overflow: hidden;
+                padding: 0;
+            }
+
+            .add-bottom {
+                margin-bottom: 30px;
+            }
+
+            .cd-hero-slider > li {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                -webkit-transform: translateX(100%);
+                -moz-transform: translateX(100%);
+                -ms-transform: translateX(100%);
+                -o-transform: translateX(100%);
+                transform: translateX(100%);
+            }
+
+            .cd-hero-slider > li.selected {
+                /* this is the visible slide */
+                position: relative;
+                -webkit-transform: translateX(0);
+                -moz-transform: translateX(0);
+                -ms-transform: translateX(0);
+                -o-transform: translateX(0);
+                transform: translateX(0);
+            }
+
+            .cd-hero-slider > li.move-left {
+                /* slide hidden on the left */
+                -webkit-transform: translateX(-100%);
+                -moz-transform: translateX(-100%);
+                -ms-transform: translateX(-100%);
+                -o-transform: translateX(-100%);
+                transform: translateX(-100%);
+            }
+
+            .cd-hero-slider > li.is-moving, .cd-hero-slider > li.selected {
+                /* the is-moving class is assigned to the slide which is moving outside the viewport */
+                -webkit-transition: -webkit-transform 0.5s;
+                -moz-transition: -moz-transform 0.5s;
+                transition: transform 0.5s;
+            }
+
+            .cd-hero {
+                position: absolute;
+                left: 0;
+                right: 0;
+                background: #FFF;
+            }
+
+            @media only screen and (min-width: 768px) {
+                .cd-hero {
+                    height: 500px;
+                    top: 50%;
+                    margin-top: -250px;
+                }
+                .cd-hero-slider {
+                    height: 500px;
+                }
+            }
+
+            @media only screen and (min-width: 1170px) {
+                .cd-hero {
+                    height: 680px;
+                    top: 50%;
+                    margin-top: -340px;
+                }
+                .cd-hero-slider {
+                    height: 680px;
+                }
+            }
+
+            /* --------------------------------
+
+            Single slide style
+
+            -------------------------------- */
+            .cd-hero-slider > li {
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .cd-hero-slider > li:first-of-type {
+
+            }
+
+            .cd-hero-slider > li:nth-of-type(2) {
+
+            }
+
+            .cd-hero-slider > li:nth-of-type(3) {
+
+            }
+
+            .cd-hero-slider > li:nth-of-type(4) {
+
+            }
+
+            .cd-hero-slider > li:nth-of-type(5) {
+
+            }
+
+            .cd-hero-slider .cd-full-width,
+            .cd-hero-slider .cd-half-width {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                /* this padding is used to align the text */
+
+
+                /* Force Hardware Acceleration in WebKit */
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                -webkit-transform: translateZ(0);
+                -moz-transform: translateZ(0);
+                -ms-transform: translateZ(0);
+                -o-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+
+            .cd-hero-slider .cd-img-container {
+                /* hide image on mobile device */
+                display: none;
+            }
+
+            .cd-hero-slider .cd-img-container img {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                bottom: auto;
+                right: auto;
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                -moz-transform: translateX(-50%) translateY(-50%);
+                -ms-transform: translateX(-50%) translateY(-50%);
+                -o-transform: translateX(-50%) translateY(-50%);
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            .cd-hero-slider .cd-bg-video-wrapper {
+                /* hide video on mobile device */
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+
+            .cd-hero-slider .cd-bg-video-wrapper video {
+                /* you won't see this element in the html, but it will be injected using js */
+                display: block;
+                min-height: 100%;
+                min-width: 100%;
+                max-width: none;
+                height: auto;
+                width: auto;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                bottom: auto;
+                right: auto;
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                -moz-transform: translateX(-50%) translateY(-50%);
+                -ms-transform: translateX(-50%) translateY(-50%);
+                -o-transform: translateX(-50%) translateY(-50%);
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            .cd-hero-slider h2, .cd-hero-slider p {
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                line-height: 1.2;
+                margin: 0 auto 14px;
+                color: #ffffff;
+                width: 90%;
+                max-width: 400px;
+            }
+
+            .cd-hero-slider h2 {
+                font-size: 2.4rem;
+            }
+
+            .cd-hero-slider p {
+                font-size: 1.4rem;
+                line-height: 1.4;
+            }
+
+            .cd-hero-slider .cd-btn {
+                display: inline-block;
+                padding: 1.2em 1.4em;
+                margin-top: .8em;
+                background-color: #135681;
+                font-size: 1.3rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+                color: #ffffff;
+                text-transform: uppercase;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+                -webkit-transition: background-color 0.2s;
+                -moz-transition: background-color 0.2s;
+                transition: background-color 0.2s;
+            }
+
+            .cd-hero-slider .cd-btn.secondary {
+                background-color: rgba(22, 26, 30, 0.8);
+            }
+
+            .cd-hero-slider .cd-btn:nth-of-type(2) {
+                margin-left: 1em;
+            }
+
+            .no-touch .cd-hero-slider .cd-btn:hover {
+                background-color: #135681;
+            }
+
+            .no-touch .cd-hero-slider .cd-btn.secondary:hover {
+                background-color: #161a1e;
+            }
+
+            @media only screen and (min-width: 768px) {
+                .cd-hero-slider > li:nth-of-type(2) {
+                    background-image: none;
+                }
+
+                .cd-hero-slider > li:nth-of-type(3) {
+                    background-image: none;
+                }
+
+                .cd-hero-slider > li:nth-of-type(4) {
+                    background-image: none;
+                }
+
+                .cd-hero-slider .cd-full-width,
+                .cd-hero-slider .cd-half-width {
+                    padding: 30px;
+                }
+
+                .cd-hero-slider .cd-bg-video-wrapper {
+                    display: block;
+                }
+
+                .cd-hero-slider .cd-half-width {
+                    width: 45%;
+                }
+
+                .cd-hero-slider .cd-half-width:first-of-type {
+                    left: 5%;
+                }
+
+                .cd-hero-slider .cd-half-width:nth-of-type(2) {
+                    right: 5%;
+                    left: auto;
+                }
+
+                .cd-hero-slider .cd-img-container {
+                    display: block;
+                }
+
+                .cd-hero-slider h2, .cd-hero-slider p {
+                    max-width: 520px;
+                }
+
+                .cd-hero-slider h2 {
+                    font-size: 2.4em;
+                    font-weight: 300;
+                }
+
+                .cd-hero-slider .cd-btn {
+                    font-size: 1.4rem;
+                }
+            }
+
+            @media only screen and (min-width: 1170px) {
+                .cd-hero-slider .cd-full-width,
+                .cd-hero-slider .cd-half-width {
+
+                }
+
+                .cd-hero-slider h2, .cd-hero-slider p {
+                    margin-bottom: 20px;
+                }
+
+                .cd-hero-slider h2 {
+                    font-size: 3.2em;
+                }
+
+                .cd-hero-slider p {
+                    font-size: 1.6rem;
+                }
+            }
+
+            /* --------------------------------
+
+            Single slide animation
+
+            -------------------------------- */
+            @media only screen and (min-width: 768px) {
+                .cd-hero-slider .cd-half-width {
+                    opacity: 0;
+                    -webkit-transform: translateX(40px);
+                    -moz-transform: translateX(40px);
+                    -ms-transform: translateX(40px);
+                    -o-transform: translateX(40px);
+                    transform: translateX(40px);
+                }
+
+                .cd-hero-slider .move-left .cd-half-width {
+                    -webkit-transform: translateX(-40px);
+                    -moz-transform: translateX(-40px);
+                    -ms-transform: translateX(-40px);
+                    -o-transform: translateX(-40px);
+                    transform: translateX(-40px);
+                }
+
+                .cd-hero-slider .selected .cd-half-width {
+                    /* this is the visible slide */
+                    opacity: 1;
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0);
+                }
+
+                .cd-hero-slider .is-moving .cd-half-width {
+                    /* this is the slide moving outside the viewport
+                    wait for the end of the transition on the <li> parent before set opacity to 0 and translate to 40px/-40px */
+                    -webkit-transition: opacity 0s 0.5s, -webkit-transform 0s 0.5s;
+                    -moz-transition: opacity 0s 0.5s, -moz-transform 0s 0.5s;
+                    transition: opacity 0s 0.5s, transform 0s 0.5s;
+                }
+
+                .cd-hero-slider > li.selected.from-left .cd-half-width:nth-of-type(2),
+                .cd-hero-slider > li.selected.from-right .cd-half-width:first-of-type {
+                    /* this is the selected slide - different animation if it's entering from left or right */
+                    -webkit-transition: opacity 0.4s 0.2s, -webkit-transform 0.5s 0.2s;
+                    -moz-transition: opacity 0.4s 0.2s, -moz-transform 0.5s 0.2s;
+                    transition: opacity 0.4s 0.2s, transform 0.5s 0.2s;
+                }
+
+                .cd-hero-slider > li.selected.from-left .cd-half-width:first-of-type,
+                .cd-hero-slider > li.selected.from-right .cd-half-width:nth-of-type(2) {
+                    /* this is the selected slide - different animation if it's entering from left or right */
+                    -webkit-transition: opacity 0.4s 0.4s, -webkit-transform 0.5s 0.4s;
+                    -moz-transition: opacity 0.4s 0.4s, -moz-transform 0.5s 0.4s;
+                    transition: opacity 0.4s 0.4s, transform 0.5s 0.4s;
+                }
+
+                .cd-hero-slider .cd-full-width h2,
+                .cd-hero-slider .cd-full-width p,
+                .cd-hero-slider .cd-full-width .cd-btn {
+                    opacity: 0;
+                    -webkit-transform: translateX(100px);
+                    -moz-transform: translateX(100px);
+                    -ms-transform: translateX(100px);
+                    -o-transform: translateX(100px);
+                    transform: translateX(100px);
+                }
+
+                .cd-hero-slider .move-left .cd-full-width h2,
+                .cd-hero-slider .move-left .cd-full-width p,
+                .cd-hero-slider .move-left .cd-full-width .cd-btn {
+                    opacity: 0;
+                    -webkit-transform: translateX(-100px);
+                    -moz-transform: translateX(-100px);
+                    -ms-transform: translateX(-100px);
+                    -o-transform: translateX(-100px);
+                    transform: translateX(-100px);
+                }
+
+                .cd-hero-slider .selected .cd-full-width h2,
+                .cd-hero-slider .selected .cd-full-width p,
+                .cd-hero-slider .selected .cd-full-width .cd-btn {
+                    /* this is the visible slide */
+                    opacity: 1;
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0);
+                }
+
+                .cd-hero-slider > li.is-moving .cd-full-width h2,
+                .cd-hero-slider > li.is-moving .cd-full-width p,
+                .cd-hero-slider > li.is-moving .cd-full-width .cd-btn {
+                    /* this is the slide moving outside the viewport
+                    wait for the end of the transition on the li parent before set opacity to 0 and translate to 100px/-100px */
+                    -webkit-transition: opacity 0s 0.5s, -webkit-transform 0s 0.5s;
+                    -moz-transition: opacity 0s 0.5s, -moz-transform 0s 0.5s;
+                    transition: opacity 0s 0.5s, transform 0s 0.5s;
+                }
+
+                .cd-hero-slider > li.selected h2 {
+                    -webkit-transition: opacity 0.4s 0.2s, -webkit-transform 0.5s 0.2s;
+                    -moz-transition: opacity 0.4s 0.2s, -moz-transform 0.5s 0.2s;
+                    transition: opacity 0.4s 0.2s, transform 0.5s 0.2s;
+                }
+
+                .cd-hero-slider > li.selected p {
+                    -webkit-transition: opacity 0.4s 0.3s, -webkit-transform 0.5s 0.3s;
+                    -moz-transition: opacity 0.4s 0.3s, -moz-transform 0.5s 0.3s;
+                    transition: opacity 0.4s 0.3s, transform 0.5s 0.3s;
+                }
+
+                .cd-hero-slider > li.selected .cd-btn {
+                    -webkit-transition: opacity 0.4s 0.4s, -webkit-transform 0.5s 0.4s, background-color 0.2s 0s;
+                    -moz-transition: opacity 0.4s 0.4s, -moz-transform 0.5s 0.4s, background-color 0.2s 0s;
+                    transition: opacity 0.4s 0.4s, transform 0.5s 0.4s, background-color 0.2s 0s;
+                }
+            }
+
+            /* --------------------------------
+
+            Slider navigation
+
+            -------------------------------- */
+            .cd-slider-nav {
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                z-index: 2;
+                text-align: center;
+                height: 55px;
+                background-color: rgba(0, 1, 1, 0.5);
+            }
+
+            .cd-slider-nav nav, .cd-slider-nav ul, .cd-slider-nav li, .cd-slider-nav a {
+                height: 100%;
+            }
+
+            .cd-slider-nav nav {
+                display: inline-block;
+                position: relative;
+            }
+
+            .cd-slider-nav .cd-marker {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 60px;
+                height: 100%;
+                color: #135681;
+                background-color: #ffffff;
+                box-shadow: inset 0 2px 0 currentColor;
+                -webkit-transition: -webkit-transform 0.2s, box-shadow 0.2s;
+                -moz-transition: -moz-transform 0.2s, box-shadow 0.2s;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .cd-slider-nav .cd-marker.item-2 {
+                -webkit-transform: translateX(100%);
+                -moz-transform: translateX(100%);
+                -ms-transform: translateX(100%);
+                -o-transform: translateX(100%);
+                transform: translateX(100%);
+            }
+
+            .cd-slider-nav .cd-marker.item-3 {
+                -webkit-transform: translateX(200%);
+                -moz-transform: translateX(200%);
+                -ms-transform: translateX(200%);
+                -o-transform: translateX(200%);
+                transform: translateX(200%);
+            }
+
+            .cd-slider-nav .cd-marker.item-4 {
+                -webkit-transform: translateX(300%);
+                -moz-transform: translateX(300%);
+                -ms-transform: translateX(300%);
+                -o-transform: translateX(300%);
+                transform: translateX(300%);
+            }
+
+            .cd-slider-nav .cd-marker.item-5 {
+                -webkit-transform: translateX(400%);
+                -moz-transform: translateX(400%);
+                -ms-transform: translateX(400%);
+                -o-transform: translateX(400%);
+                transform: translateX(400%);
+            }
+
+            .cd-slider-nav ul::after {
+                clear: both;
+                content: "";
+                display: table;
+            }
+
+            .cd-slider-nav li {
+                display: inline-block;
+                width: 60px;
+                float: left;
+            }
+
+            .cd-slider-nav li.selected a {
+                color: #2c343b;
+            }
+
+            .no-touch .cd-slider-nav li.selected a:hover {
+                background-color: transparent;
+            }
+
+            .cd-slider-nav a {
+                display: block;
+                position: relative;
+                padding-top: 35px;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #a8b4be;
+                -webkit-transition: background-color 0.2s;
+                -moz-transition: background-color 0.2s;
+                transition: background-color 0.2s;
+            }
+
+            .cd-slider-nav a::before {
+                content: '';
+                position: absolute;
+                width: 24px;
+                height: 24px;
+                top: 8px;
+                left: 50%;
+                right: auto;
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+                background: url(/images/grovesky/cd-icon-navigation.png) no-repeat 0 0;
+            }
+
+            .no-touch .cd-slider-nav a:hover {
+                background-color: rgba(0, 1, 1, 0.5);
+            }
+
+            .cd-slider-nav li:first-of-type a::before {
+                background-position: 0 0;
+            }
+
+            .cd-slider-nav li.selected:first-of-type a::before {
+                background-position: 0 -24px;
+            }
+
+            .cd-slider-nav li:nth-of-type(2) a::before {
+                background-position: -24px 0;
+            }
+
+            .cd-slider-nav li.selected:nth-of-type(2) a::before {
+                background-position: -24px -24px;
+            }
+
+            .cd-slider-nav li:nth-of-type(3) a::before {
+                background-position: -48px 0;
+            }
+
+            .cd-slider-nav li.selected:nth-of-type(3) a::before {
+                background-position: -48px -24px;
+            }
+
+            .cd-slider-nav li:nth-of-type(4) a::before {
+                background-position: -72px 0;
+            }
+
+            .cd-slider-nav li.selected:nth-of-type(4) a::before {
+                background-position: -72px -24px;
+            }
+
+            .cd-slider-nav li:nth-of-type(5) a::before {
+                background-position: -96px 0;
+            }
+
+            .cd-slider-nav li.selected:nth-of-type(5) a::before {
+                background-position: -96px -24px;
+            }
+
+            @media only screen and (min-width: 768px) {
+                .cd-slider-nav {
+                    height: 80px;
+                }
+
+                .cd-slider-nav .cd-marker,
+                .cd-slider-nav li {
+                    width: 95px;
+                }
+
+                .cd-slider-nav a {
+                    padding-top: 48px;
+                    font-size: 1.1rem;
+                    text-transform: uppercase;
+                }
+
+                .cd-slider-nav a::before {
+                    top: 18px;
+                }
+            }
+
+            /* --------------------------------
+
+            Main content
+
+            -------------------------------- */
+            .cd-main-content {
+                width: 90%;
+                max-width: 768px;
+                margin: 0 auto;
+                padding: 2em 0;
+            }
+
+            .cd-main-content p {
+                font-size: 1.4rem;
+                line-height: 1.8;
+                color: #999999;
+                margin: 2em 0;
+            }
+
+            @media only screen and (min-width: 1170px) {
+                .cd-main-content {
+                    padding: 3em 0;
+                }
+
+                .cd-main-content p {
+                    font-size: 1.6rem;
+                }
+            }
+
+            /* --------------------------------
+
+            Javascript disabled
+
+            -------------------------------- */
+            .no-js .cd-hero-slider > li {
+                display: none;
+            }
+
+            .no-js .cd-hero-slider > li.selected {
+                display: block;
+            }
+
+            .no-js .cd-slider-nav {
+                display: none;
+            }
+
+
+
+            .galleria { height: 540px; background: #fff  }
+            .galleria-stage { bottom: 80px !important; }
+            .galleria-thumbnails-container { height: 70px !important; }
+            .galleria-thumbnails .galleria-image { height: 60px !important; }
+
+            .galleria-tall .galleria-stage {
+                bottom: 0px !important;
+                left: 120px;
+            }
+            .galleria-tall .galleria-thumbnails-container {
+                height: 100% !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                top: 0 !important;
+                position: absolute;
+                z-index: 0 !important;
+                width: auto !important;
+            }
+            .galleria-tall .galleria-thumbnails-list {
+                overflow: auto !important;
+                position: absolute !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: auto !important;
+            }
+            .galleria-tall .galleria-thumbnails {
+                overflow: auto !important;
+                position: absolute;
+                top: 0;
+                bottom: 0 !important;
+                left: 0;
+                height: 100% !important;
+            }
+            .galleria-tall .galleria-thumbnails .galleria-image {
+                width: 101px !important;
+                height: 180px !important;
+                float: none !important;
+                background: #FFF !important;
+                border: 2px solid white;
+            }
+
+            @media only screen and (max-width: 768px) {
+
+                .galleria {
+                    height: 350px !important;
+                }
+
+                .cd-slider-nav {
+                    background: #696969;
+                }
+
+                .cd-hero {
+                    bottom: 30px;
+                    top: 30px;
+
+                }
+
+                .cd-hero-slider > li:first-of-type {
+                    background: url('/images/grovesky/1.jpg');
+                    background-position: center;
+                    background-size: cover;
+                }
+
+                .logo-container {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 100%;
+                    padding: 0 5%;
+                    height: 164px;
+                    margin-top: -82px;
+                    margin-left: 0;
+                }
+
+                .cd-hero-slider {
+                    height: 100% !important;
+                }
+
+                .cd-full-width {
+                    overflow: auto;
+                    padding: 15px 0 75px;
+                }
+
+                .galleria-tall .galleria-stage {
+                    bottom: 0px !important;
+                    left: 66px;
+                }
+
+                .galleria-tall .galleria-thumbnails-container {
+                    height: 100% !important;
+                    bottom: 0 !important;
+                    left: 0 !important;
+                    top: 0 !important;
+                    position: absolute;
+                    z-index: 0 !important;
+                    width: auto !important;
+                }
+
+                .galleria-tall .galleria-thumbnails-list {
+                    overflow: auto !important;
+                    position: absolute !important;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                    width: auto !important;
+                }
+
+                .galleria-tall .galleria-thumbnails {
+                    overflow: auto !important;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0 !important;
+                    left: 0;
+                    height: 100% !important;
+                }
+
+                .galleria-tall .galleria-thumbnails .galleria-image {
+                    width: 66px !important;
+                    height: 118px !important;
+                    float: none !important;
+                    background: #FFF !important;
+                    border: 2px solid white;
+                }
+
+            }
+
+    body#main-body(data-csrf=_csrf)
+
+        block content
+
+    script(src="/js/dependencies/sails.io.js")
+    script(src="/js/dependencies/jquery-1.11.1.min.js")
+    script(src="/js/dependencies/jquery-ui.js")
+    script(src="/js/libs/bootstrap-3.3.2.js")
+    script(src="/js/libs/galleria-1.4.2.js")
+    script(src="/js/libs/grovesky.js")
+    script(src="/js/libs/underscore-1.7.0.min.js")
+    script(src="/js/libs/mustache-0.8.2.min.js")
+    script(type="text/javascript").
+        jQuery(document).ready(function ($) {
+            var slidesWrapper = $('.cd-hero-slider');
+
+            //check if a .cd-hero-slider exists in the DOM
+            if (slidesWrapper.length > 0) {
+                var primaryNav = $('.cd-primary-nav'),
+                        sliderNav = $('.cd-slider-nav'),
+                        navigationMarker = $('.cd-marker'),
+                        slidesNumber = slidesWrapper.children('li').length,
+                        visibleSlidePosition = 0,
+                        autoPlayId,
+                        autoPlayDelay = 5000;
+
+                //upload videos (if not on mobile devices)
+                uploadVideo(slidesWrapper);
+
+                //autoplay slider
+                setAutoplay(slidesWrapper, slidesNumber, autoPlayDelay);
+
+                //on mobile - open/close primary navigation clicking/tapping the menu icon
+                primaryNav.on('click', function (event) {
+                    if ($(event.target).is('.cd-primary-nav')) $(this).children('ul').toggleClass('is-visible');
+                });
+
+                //change visible slide
+                sliderNav.on('click', 'li', function (event) {
+                    event.preventDefault();
+                    var selectedItem = $(this);
+                    if (!selectedItem.hasClass('selected')) {
+                        // if it's not already selected
+                        var selectedPosition = selectedItem.index(),
+                                activePosition = slidesWrapper.find('li.selected').index();
+
+                        if (activePosition < selectedPosition) {
+                            nextSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, selectedPosition);
+                        } else {
+                            prevSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, selectedPosition);
+                        }
+
+                        //this is used for the autoplay
+                        visibleSlidePosition = selectedPosition;
+
+                        updateSliderNavigation(sliderNav, selectedPosition);
+                        updateNavigationMarker(navigationMarker, selectedPosition + 1);
+                        //reset autoplay
+                        setAutoplay(slidesWrapper, slidesNumber, autoPlayDelay);
+                    }
+                });
+            }
+
+            function nextSlide(visibleSlide, container, pagination, n) {
+                visibleSlide.removeClass('selected from-left from-right').addClass('is-moving').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+                    visibleSlide.removeClass('is-moving');
+                });
+
+                container.children('li').eq(n).addClass('selected from-right').prevAll().addClass('move-left');
+                checkVideo(visibleSlide, container, n);
+            }
+
+            function prevSlide(visibleSlide, container, pagination, n) {
+                visibleSlide.removeClass('selected from-left from-right').addClass('is-moving').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+                    visibleSlide.removeClass('is-moving');
+                });
+
+                container.children('li').eq(n).addClass('selected from-left').removeClass('move-left').nextAll().removeClass('move-left');
+                checkVideo(visibleSlide, container, n);
+            }
+
+            function updateSliderNavigation(pagination, n) {
+                var navigationDot = pagination.find('.selected');
+                navigationDot.removeClass('selected');
+                pagination.find('li').eq(n).addClass('selected');
+            }
+
+            function setAutoplay(wrapper, length, delay) {
+                if (wrapper.hasClass('autoplay')) {
+                    clearInterval(autoPlayId);
+                    autoPlayId = window.setInterval(function () {
+                        autoplaySlider(length)
+                    }, delay);
+                }
+            }
+
+            function autoplaySlider(length) {
+                if (visibleSlidePosition < length - 1) {
+                    nextSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, visibleSlidePosition + 1);
+                    visibleSlidePosition += 1;
+                } else {
+                    prevSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, 0);
+                    visibleSlidePosition = 0;
+                }
+                updateNavigationMarker(navigationMarker, visibleSlidePosition + 1);
+                updateSliderNavigation(sliderNav, visibleSlidePosition);
+            }
+
+            function uploadVideo(container) {
+                container.find('.cd-bg-video-wrapper').each(function () {
+                    var videoWrapper = $(this);
+                    if (videoWrapper.is(':visible')) {
+                        // if visible - we are not on a mobile device
+                        var videoUrl = videoWrapper.data('video'),
+                                video = $('<video loop><source src="' + videoUrl + '.mp4" type="video/mp4" /><source src="' + videoUrl + '.webm" type="video/webm" /></video>');
+                        video.appendTo(videoWrapper);
+                        // play video if first slide
+                        if (videoWrapper.parent('.cd-bg-video.selected').length > 0) video.get(0).play();
+                    }
+                });
+            }
+
+            function checkVideo(hiddenSlide, container, n) {
+                //check if a video outside the viewport is playing - if yes, pause it
+                var hiddenVideo = hiddenSlide.find('video');
+                if (hiddenVideo.length > 0) hiddenVideo.get(0).pause();
+
+                //check if the select slide contains a video element - if yes, play the video
+                var visibleVideo = container.children('li').eq(n).find('video');
+                if (visibleVideo.length > 0) visibleVideo.get(0).play();
+            }
+
+            function updateNavigationMarker(marker, n) {
+                marker.removeClassPrefix('item').addClass('item-' + n);
+            }
+
+            $.fn.removeClassPrefix = function (prefix) {
+                //remove all classes starting with 'prefix'
+                this.each(function (i, el) {
+                    var classes = el.className.split(" ").filter(function (c) {
+                        return c.lastIndexOf(prefix, 0) !== 0;
+                    });
+                    el.className = $.trim(classes.join(" "));
+                });
+                return this;
+            };
+
+            Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js');
+            Galleria.configure({
+                imageCrop: false,
+                autoplay: false,
+                responsive: true,
+                lightbox: true,
+                showCounter: true,
+                transition: 'fade',
+                swipe: true,
+                imagePan: true,
+                carouselSteps: 0
+            });
+            Galleria.run('.galleria');
+
+            $('#grovesky-contact-form').on('submit', function (e, d) {
+
+                // Hold Of Normal Form Behavior
+                e.preventDefault();
+                e.stopPropagation();
+
+                var data = {
+                    _csrf: $('body').data('csrf'),
+                    data: $('#grovesky-contact-form').serializeArray()
+                };
+
+                $.ajax({
+                    url: '/mail/grovesky',
+                    method: 'POST',
+                    data: JSON.stringify(data),
+                    crossDomain: false,
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    jsonp: false,
+                    error: function (data, b, res) {
+
+                    },
+                    success: function (data, b, res) {
+
+                    },
+                    complete: function () {
+                        $('#grovesky-contact-form')[0].reset();
+                        $("body").animate({scrollTop: 0}, "fast");
+                        $('#thanks').modal('show');
+                    }
+                });
+
+            });
+
+        });
